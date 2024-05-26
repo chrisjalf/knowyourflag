@@ -10,20 +10,24 @@
 		CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B12C030A6800E59184 /* AppDelegate.swift */; };
 		CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B32C030A6800E59184 /* SceneDelegate.swift */; };
 		CC7397B62C030A6800E59184 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B52C030A6800E59184 /* ViewController.swift */; };
-		CC7397B92C030A6800E59184 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7397B72C030A6800E59184 /* Main.storyboard */; };
 		CC7397BB2C030A6900E59184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7397BA2C030A6900E59184 /* Assets.xcassets */; };
 		CC7397BE2C030A6900E59184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7397BC2C030A6900E59184 /* LaunchScreen.storyboard */; };
+		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
+		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6D07747E252017BF548719A /* Pods-knowyourflag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.release.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.release.xcconfig"; sourceTree = "<group>"; };
+		B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knowyourflag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.debug.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.debug.xcconfig"; sourceTree = "<group>"; };
 		CC7397AE2C030A6800E59184 /* knowyourflag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knowyourflag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7397B12C030A6800E59184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7397B32C030A6800E59184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CC7397B52C030A6800E59184 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CC7397B82C030A6800E59184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC7397BA2C030A6900E59184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC7397BD2C030A6900E59184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC7397BF2C030A6900E59184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6172BAFE397FB2E46EAE2E4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC7397A52C030A6800E59184 = {
 			isa = PBXGroup;
 			children = (
 				CC7397B02C030A6800E59184 /* knowyourflag */,
 				CC7397AF2C030A6800E59184 /* Products */,
+				D4537A9D108C2C1C8F7E1E4C /* Pods */,
+				6172BAFE397FB2E46EAE2E4E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +74,21 @@
 				CC7397B12C030A6800E59184 /* AppDelegate.swift */,
 				CC7397B32C030A6800E59184 /* SceneDelegate.swift */,
 				CC7397B52C030A6800E59184 /* ViewController.swift */,
-				CC7397B72C030A6800E59184 /* Main.storyboard */,
 				CC7397BA2C030A6900E59184 /* Assets.xcassets */,
 				CC7397BC2C030A6900E59184 /* LaunchScreen.storyboard */,
 				CC7397BF2C030A6900E59184 /* Info.plist */,
+				CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */,
 			);
 			path = knowyourflag;
+			sourceTree = "<group>";
+		};
+		D4537A9D108C2C1C8F7E1E4C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */,
+				A6D07747E252017BF548719A /* Pods-knowyourflag.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC7397C22C030A6900E59184 /* Build configuration list for PBXNativeTarget "knowyourflag" */;
 			buildPhases = (
+				EE3601FAFFF64558C0E30694 /* [CP] Check Pods Manifest.lock */,
 				CC7397AA2C030A6800E59184 /* Sources */,
 				CC7397AB2C030A6800E59184 /* Frameworks */,
 				CC7397AC2C030A6800E59184 /* Resources */,
+				7E5D300C2FCF90758BF36DF4 /* [CP] Embed Pods Frameworks */,
+				CCA34C0D2C03379C00CCCB68 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -127,11 +154,75 @@
 			files = (
 				CC7397BE2C030A6900E59184 /* LaunchScreen.storyboard in Resources */,
 				CC7397BB2C030A6900E59184 /* Assets.xcassets in Resources */,
-				CC7397B92C030A6800E59184 /* Main.storyboard in Resources */,
+				CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E5D300C2FCF90758BF36DF4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-knowyourflag/Pods-knowyourflag-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-knowyourflag/Pods-knowyourflag-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-knowyourflag/Pods-knowyourflag-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCA34C0D2C03379C00CCCB68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		EE3601FAFFF64558C0E30694 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-knowyourflag-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC7397AA2C030A6800E59184 /* Sources */ = {
@@ -147,14 +238,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CC7397B72C030A6800E59184 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC7397B82C030A6800E59184 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CC7397BC2C030A6900E59184 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -218,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -287,19 +370,24 @@
 		};
 		CC7397C32C030A6900E59184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = N38WBA7279;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = knowyourflag/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KnowYourFlag;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,27 +395,34 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.chrisjames.knowyourflag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CC7397C42C030A6900E59184 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6D07747E252017BF548719A /* Pods-knowyourflag.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N38WBA7279;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = knowyourflag/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KnowYourFlag;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +430,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.chrisjames.knowyourflag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
