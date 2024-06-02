@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.....
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -24,11 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createTabBar() -> UITabBarController {
-        let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .white
-        tabBar.viewControllers = [createHomeNavigationController()]
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.backgroundColor = .black
+        tabBarController.viewControllers = [createHomeNavigationController()]
         
-        return tabBar
+        if #available(iOS 15.0, *) {
+           let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = nil
+            tabBarController.tabBar.standardAppearance = appearance
+        }
+        
+        return tabBarController
     }
     
     func createHomeNavigationController() -> UINavigationController {
