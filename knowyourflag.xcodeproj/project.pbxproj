@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */; };
 		CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B12C030A6800E59184 /* AppDelegate.swift */; };
 		CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B32C030A6800E59184 /* SceneDelegate.swift */; };
 		CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B52C030A6800E59184 /* MainViewController.swift */; };
@@ -21,6 +22,7 @@
 		A6D07747E252017BF548719A /* Pods-knowyourflag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.release.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.release.xcconfig"; sourceTree = "<group>"; };
 		B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knowyourflag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.debug.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.debug.xcconfig"; sourceTree = "<group>"; };
+		CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC7397AE2C030A6800E59184 /* knowyourflag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knowyourflag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7397B12C030A6800E59184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7397B32C030A6800E59184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +54,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC6ADFD42C0CA67A00326DE9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CC7B8E912C060972002AC0CD /* HomeVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CC6ADFD52C0CA68700326DE9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC6ADFD62C0CA68D00326DE9 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CC6ADFD62C0CA68D00326DE9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		CC7397A52C030A6800E59184 = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +99,10 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
+				CC6ADFD52C0CA68700326DE9 /* Views */,
+				CC6ADFD42C0CA67A00326DE9 /* Screens */,
 				CC7397B12C030A6800E59184 /* AppDelegate.swift */,
 				CC7397B32C030A6800E59184 /* SceneDelegate.swift */,
-				CC7B8E912C060972002AC0CD /* HomeVC.swift */,
 				CC7397B52C030A6800E59184 /* MainViewController.swift */,
 				CC7397BA2C030A6900E59184 /* Assets.xcassets */,
 				CC7397BC2C030A6900E59184 /* LaunchScreen.storyboard */,
@@ -232,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */,
 				CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */,
 				CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */,
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
