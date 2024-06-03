@@ -10,12 +10,16 @@ import UIKit
 class GameVC: UIViewController {
     
     let flagImageView = UIImageView()
-
+    let scoreLabel = UILabel()
+    
+    var score = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .systemBackground
         configureFlagImageView()
+        configureScoreLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +45,22 @@ class GameVC: UIViewController {
             flagImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             flagImageView.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.8),
             flagImageView.heightAnchor.constraint(equalTo: flagImageView.widthAnchor),
+        ])
+    }
+    
+    private func configureScoreLabel() {
+        view.addSubview(scoreLabel)
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.text = "\(score)"
+        scoreLabel.font = UIFont.systemFont(ofSize: 18)
+        scoreLabel.textAlignment = .center
+        scoreLabel.backgroundColor = .systemPink
+        
+        NSLayoutConstraint.activate([
+            scoreLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
+            scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            scoreLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 75),
+            scoreLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
