@@ -62,5 +62,16 @@ class GameVC: UIViewController {
             scoreLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 75),
             scoreLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+        scoreLabel.isUserInteractionEnabled = true
+        scoreLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func labelTapped() {
+        score += 1
+        DispatchQueue.main.async {
+            self.scoreLabel.text = "\(self.score)"
+        }
     }
 }
