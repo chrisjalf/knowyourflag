@@ -59,4 +59,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Tapped: \(modes[indexPath.row])")
+    }
 }
