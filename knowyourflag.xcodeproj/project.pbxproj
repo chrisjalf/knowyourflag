@@ -20,7 +20,7 @@
 		CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */; };
 		CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5C2C0D97A10066177C /* KYFButton.swift */; };
 		CC770D5F2C0D9E380066177C /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5E2C0D9E380066177C /* GameVC.swift */; };
-		CC770D612C0D9E800066177C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D602C0D9E800066177C /* UIColor+Ext.swift */; };
+		CC770D642C0DCF910066177C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D632C0DCF910066177C /* Country.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
 		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
@@ -45,7 +45,7 @@
 		CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		CC770D5C2C0D97A10066177C /* KYFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFButton.swift; sourceTree = "<group>"; };
 		CC770D5E2C0D9E380066177C /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
-		CC770D602C0D9E800066177C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		CC770D632C0DCF910066177C /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +119,7 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
+				CC770D622C0DCF850066177C /* Models */,
 				CC770D4E2C0D96190066177C /* Extensions */,
 				CC6ADFD52C0CA68700326DE9 /* CustomViews */,
 				CC6ADFD42C0CA67A00326DE9 /* Screens */,
@@ -137,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */,
-				CC770D602C0D9E800066177C /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -166,6 +166,14 @@
 				CC770D5C2C0D97A10066177C /* KYFButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CC770D622C0DCF850066177C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC770D632C0DCF910066177C /* Country.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D4537A9D108C2C1C8F7E1E4C /* Pods */ = {
@@ -319,9 +327,9 @@
 				CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */,
 				CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */,
 				CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */,
+				CC770D642C0DCF910066177C /* Country.swift in Sources */,
 				CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */,
 				CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */,
-				CC770D612C0D9E800066177C /* UIColor+Ext.swift in Sources */,
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,

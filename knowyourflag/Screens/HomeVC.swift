@@ -10,7 +10,7 @@ import UIKit
 class HomeVC: UIViewController {
     
     var collectionView: UICollectionView!
-    let modes = ["Guess The Name", "Guess The Flag", "TickTackToe", "Puzzle"]
+    let modes = ["Guess The Country", "Guess The Flag", "TickTackToe", "Puzzle"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
