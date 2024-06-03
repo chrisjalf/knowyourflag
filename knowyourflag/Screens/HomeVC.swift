@@ -61,6 +61,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.presentAlertOnMainThread(title: "Hello", message: "How are you?", buttonTitle: "Good Bye")
+        let gameViewController = GameVC()
+        navigationController?.pushViewController(gameViewController, animated: true)
     }
 }

@@ -19,6 +19,8 @@
 		CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D582C0D974B0066177C /* KYFBodyLabel.swift */; };
 		CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */; };
 		CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5C2C0D97A10066177C /* KYFButton.swift */; };
+		CC770D5F2C0D9E380066177C /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5E2C0D9E380066177C /* GameVC.swift */; };
+		CC770D612C0D9E800066177C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D602C0D9E800066177C /* UIColor+Ext.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
 		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
@@ -42,6 +44,8 @@
 		CC770D582C0D974B0066177C /* KYFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFBodyLabel.swift; sourceTree = "<group>"; };
 		CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		CC770D5C2C0D97A10066177C /* KYFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFButton.swift; sourceTree = "<group>"; };
+		CC770D5E2C0D9E380066177C /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		CC770D602C0D9E800066177C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7B8E912C060972002AC0CD /* HomeVC.swift */,
+				CC770D5E2C0D9E380066177C /* GameVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */,
+				CC770D602C0D9E800066177C /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,10 +321,12 @@
 				CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */,
 				CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */,
 				CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */,
+				CC770D612C0D9E800066177C /* UIColor+Ext.swift in Sources */,
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
+				CC770D5F2C0D9E380066177C /* GameVC.swift in Sources */,
 				CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
