@@ -61,6 +61,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Tapped: \(modes[indexPath.row])")
+        self.presentAlertOnMainThread(title: "Hello", message: "How are you?", buttonTitle: "Good Bye")
     }
 }

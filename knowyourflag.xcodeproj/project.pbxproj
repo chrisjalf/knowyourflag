@@ -13,6 +13,12 @@
 		CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B52C030A6800E59184 /* MainViewController.swift */; };
 		CC7397BB2C030A6900E59184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7397BA2C030A6900E59184 /* Assets.xcassets */; };
 		CC7397BE2C030A6900E59184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7397BC2C030A6900E59184 /* LaunchScreen.storyboard */; };
+		CC770D502C0D962E0066177C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */; };
+		CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D522C0D96DB0066177C /* KYFAlertVC.swift */; };
+		CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D562C0D97280066177C /* KYFTitleLabel.swift */; };
+		CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D582C0D974B0066177C /* KYFBodyLabel.swift */; };
+		CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */; };
+		CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5C2C0D97A10066177C /* KYFButton.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
 		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
@@ -30,6 +36,12 @@
 		CC7397BA2C030A6900E59184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC7397BD2C030A6900E59184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC7397BF2C030A6900E59184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		CC770D522C0D96DB0066177C /* KYFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFAlertVC.swift; sourceTree = "<group>"; };
+		CC770D562C0D97280066177C /* KYFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFTitleLabel.swift; sourceTree = "<group>"; };
+		CC770D582C0D974B0066177C /* KYFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFBodyLabel.swift; sourceTree = "<group>"; };
+		CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		CC770D5C2C0D97A10066177C /* KYFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFButton.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,12 +74,15 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		CC6ADFD52C0CA68700326DE9 /* Views */ = {
+		CC6ADFD52C0CA68700326DE9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CC770D552C0D970A0066177C /* Buttons */,
+				CC770D542C0D97010066177C /* Labels */,
+				CC770D512C0D96B40066177C /* ViewControllers */,
 				CC6ADFD62C0CA68D00326DE9 /* Cells */,
 			);
-			path = Views;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		CC6ADFD62C0CA68D00326DE9 /* Cells */ = {
@@ -99,7 +114,8 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
-				CC6ADFD52C0CA68700326DE9 /* Views */,
+				CC770D4E2C0D96190066177C /* Extensions */,
+				CC6ADFD52C0CA68700326DE9 /* CustomViews */,
 				CC6ADFD42C0CA67A00326DE9 /* Screens */,
 				CC7397B12C030A6800E59184 /* AppDelegate.swift */,
 				CC7397B32C030A6800E59184 /* SceneDelegate.swift */,
@@ -110,6 +126,40 @@
 				CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */,
 			);
 			path = knowyourflag;
+			sourceTree = "<group>";
+		};
+		CC770D4E2C0D96190066177C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CC770D512C0D96B40066177C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC770D522C0D96DB0066177C /* KYFAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CC770D542C0D97010066177C /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				CC770D562C0D97280066177C /* KYFTitleLabel.swift */,
+				CC770D582C0D974B0066177C /* KYFBodyLabel.swift */,
+				CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		CC770D552C0D970A0066177C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CC770D5C2C0D97A10066177C /* KYFButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		D4537A9D108C2C1C8F7E1E4C /* Pods */ = {
@@ -259,11 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC770D502C0D962E0066177C /* UIViewController+Ext.swift in Sources */,
 				CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */,
+				CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */,
+				CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */,
 				CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */,
 				CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */,
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
+				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
+				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
+				CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
