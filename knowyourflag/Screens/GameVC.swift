@@ -49,18 +49,22 @@ class GameVC: UIViewController {
     }
     
     private func configureScoreLabel() {
+        let height = CGFloat(75)
+        
         view.addSubview(scoreLabel)
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreLabel.text = "\(score)"
         scoreLabel.font = UIFont.systemFont(ofSize: 18)
         scoreLabel.textAlignment = .center
         scoreLabel.backgroundColor = .systemPink
+        scoreLabel.layer.masksToBounds = true
+        scoreLabel.layer.cornerRadius = height / 2
         
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
             scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            scoreLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 75),
-            scoreLabel.heightAnchor.constraint(equalToConstant: 50)
+            scoreLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
+            scoreLabel.heightAnchor.constraint(equalToConstant: height)
         ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
