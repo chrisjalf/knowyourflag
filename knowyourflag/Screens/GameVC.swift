@@ -12,12 +12,16 @@ class GameVC: UIViewController {
     let flagImageView = UIImageView()
     let scoreLabel = UILabel()
     
+    var selectedCountriesIndex = [Int]()
+    var selectedCountryIndex = -1
+    
     var score = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        pickCountriesFlag()
         configureFlagImageView()
         configureScoreLabel()
     }
@@ -29,9 +33,28 @@ class GameVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
+    private func pickCountriesFlag() {
+        var countryIndexSet = Set<Int>()
+        var selectedCountries = [Country]()
+        
+        while countryIndexSet.count < 4 {
+            let randomIndex = Int(arc4random_uniform(UInt32(Country.all.count)))
+            countryIndexSet.insert(randomIndex)
+        }
+        
+        selectedCountriesIndex = Array(countryIndexSet)
+        
+        for i in 0...selectedCountriesIndex.count - 1 {
+            let country = Country.all[selectedCountriesIndex[i]]
+            selectedCountries.append(country)
+            print(country.name)
+        }
+        
+        selectedCountryIndex = Int.random(in: 0...selectedCountries.count - 1)
+    }
+    
     private func configureFlagImageView() {
         view.addSubview(flagImageView)
-        let selectedCountryIndex = Int.random(in: 0...Country.all.count - 1)
         let selectedCountry = Country.all[selectedCountryIndex]
         flagImageView.translatesAutoresizingMaskIntoConstraints = false
         flagImageView.image = UIImage(named: selectedCountry.code)
