@@ -27,8 +27,8 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        pickCountriesFlag()
         configureFlagImageView()
+        pickCountriesFlag()
         configureScoreLabel()
         configureCountryChoiceViews()
     }
@@ -57,13 +57,13 @@ class GameVC: UIViewController {
         }
         
         selectedCountryIndex = Int.random(in: 0...selectedCountries.count - 1)
+        
+        setFlagImage()
     }
     
     private func configureFlagImageView() {
         view.addSubview(flagImageView)
-        let selectedCountry = Country.all[selectedCountryIndex]
         flagImageView.translatesAutoresizingMaskIntoConstraints = false
-        flagImageView.image = UIImage(named: selectedCountry.code)
         flagImageView.layer.borderColor = UIColor.gray.cgColor
         flagImageView.layer.borderWidth = 1.0
         flagImageView.layer.cornerRadius = 10.0
@@ -75,6 +75,11 @@ class GameVC: UIViewController {
             flagImageView.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.8),
             flagImageView.heightAnchor.constraint(equalTo: flagImageView.widthAnchor),
         ])
+    }
+    
+    private func setFlagImage() {
+        let selectedCountry = Country.all[selectedCountriesIndex[selectedCountryIndex]]
+        flagImageView.image = UIImage(named: selectedCountry.code)
     }
     
     private func configureScoreLabel() {
@@ -95,17 +100,6 @@ class GameVC: UIViewController {
             scoreLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
             scoreLabel.heightAnchor.constraint(equalToConstant: height)
         ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
-        scoreLabel.isUserInteractionEnabled = true
-        scoreLabel.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func labelTapped() {
-        score += 1
-        DispatchQueue.main.async {
-            self.scoreLabel.text = "\(self.score)"
-        }
     }
     
     private func configureCountryChoiceViews() {
@@ -137,7 +131,22 @@ class GameVC: UIViewController {
     
     private func setCountryChoiceViewsText() {
         for i in 0...selectedCountriesIndex.count - 1 {
+            let tapGesture = KYFCountryChoiceGestureRecognizer(target: self, action: #selector(evaluateChoice))
+            tapGesture.selectedCountryIndex = i
             choiceViews[i].setCountry(country: Country.all[selectedCountriesIndex[i]].name)
+            choiceViews[i].isUserInteractionEnabled = true
+            choiceViews[i].addGestureRecognizer(tapGesture)
+        }
+    }
+    
+    @objc private func evaluateChoice(sender: KYFCountryChoiceGestureRecognizer) {
+        if sender.selectedCountryIndex == selectedCountryIndex {
+            score += 1
+            DispatchQueue.main.async {
+                self.scoreLabel.text = "\(self.score)"
+                self.pickCountriesFlag()
+                self.setCountryChoiceViewsText()
+            }
         }
     }
 }
