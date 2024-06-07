@@ -11,6 +11,12 @@ class GameVC: UIViewController {
     
     let flagImageView = UIImageView()
     let scoreLabel = UILabel()
+    var choiceViews = [
+        KYFCountryChoiceView(),
+        KYFCountryChoiceView(),
+        KYFCountryChoiceView(),
+        KYFCountryChoiceView()
+    ]
     
     var selectedCountriesIndex = [Int]()
     var selectedCountryIndex = -1
@@ -24,6 +30,7 @@ class GameVC: UIViewController {
         pickCountriesFlag()
         configureFlagImageView()
         configureScoreLabel()
+        configureCountryChoiceViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +54,6 @@ class GameVC: UIViewController {
         for i in 0...selectedCountriesIndex.count - 1 {
             let country = Country.all[selectedCountriesIndex[i]]
             selectedCountries.append(country)
-            print(country.name)
         }
         
         selectedCountryIndex = Int.random(in: 0...selectedCountries.count - 1)
@@ -77,7 +83,7 @@ class GameVC: UIViewController {
         view.addSubview(scoreLabel)
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreLabel.text = "\(score)"
-        scoreLabel.font = UIFont.systemFont(ofSize: 18)
+        scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         scoreLabel.textAlignment = .center
         scoreLabel.backgroundColor = .systemPink
         scoreLabel.layer.masksToBounds = true
@@ -99,6 +105,39 @@ class GameVC: UIViewController {
         score += 1
         DispatchQueue.main.async {
             self.scoreLabel.text = "\(self.score)"
+        }
+    }
+    
+    private func configureCountryChoiceViews() {
+        var prev = choiceViews.first!
+        
+        for (index, choiceView) in choiceViews.enumerated() {
+            view.addSubview(choiceView)
+            choiceView.translatesAutoresizingMaskIntoConstraints = false
+            
+            if (index == 0) {
+                NSLayoutConstraint.activate([
+                    choiceView.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 30),
+                    choiceView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+                    choiceView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    choiceView.topAnchor.constraint(equalTo: prev.bottomAnchor, constant: 10),
+                    choiceView.leadingAnchor.constraint(equalTo: prev.leadingAnchor),
+                    choiceView.trailingAnchor.constraint(equalTo: prev.trailingAnchor)
+                ])
+                
+                prev = choiceView
+            }
+        }
+        
+        setCountryChoiceViewsText()
+    }
+    
+    private func setCountryChoiceViewsText() {
+        for i in 0...selectedCountriesIndex.count - 1 {
+            choiceViews[i].setCountry(country: Country.all[selectedCountriesIndex[i]].name)
         }
     }
 }
