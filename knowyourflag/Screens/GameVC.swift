@@ -140,13 +140,14 @@ class GameVC: UIViewController {
     }
     
     @objc private func evaluateChoice(sender: KYFCountryChoiceGestureRecognizer) {
-        if sender.selectedCountryIndex == selectedCountryIndex {
-            score += 1
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if sender.selectedCountryIndex == self.selectedCountryIndex {
+                self.score += 1
                 self.scoreLabel.text = "\(self.score)"
-                self.pickCountriesFlag()
-                self.setCountryChoiceViewsText()
             }
+            
+            self.pickCountriesFlag()
+            self.setCountryChoiceViewsText()
         }
     }
 }
