@@ -23,6 +23,9 @@ class GuessTheCountryVC: UIViewController {
     
     var score = 0
     
+    var startingNumber = 10
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +34,19 @@ class GuessTheCountryVC: UIViewController {
         pickCountries()
         configureScoreLabel()
         configureCountryChoiceViews()
+        
+        // test timer
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func countDown() {
+        startingNumber -= 1
+        
+        if startingNumber == 0 {
+            timer.invalidate()
+        }
+        
+        print("startingNumber: \(startingNumber)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
