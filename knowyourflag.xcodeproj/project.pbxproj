@@ -21,6 +21,7 @@
 		CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5C2C0D97A10066177C /* KYFButton.swift */; };
 		CC770D5F2C0D9E380066177C /* GuessTheCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */; };
 		CC770D642C0DCF910066177C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D632C0DCF910066177C /* Country.swift */; };
+		CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */; };
 		CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */; };
 		CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
@@ -48,6 +49,7 @@
 		CC770D5C2C0D97A10066177C /* KYFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFButton.swift; sourceTree = "<group>"; };
 		CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheCountryVC.swift; sourceTree = "<group>"; };
 		CC770D632C0DCF910066177C /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagVC.swift; sourceTree = "<group>"; };
 		CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceView.swift; sourceTree = "<group>"; };
 		CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceGestureRecognizer.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				CC7B8E912C060972002AC0CD /* HomeVC.swift */,
 				CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */,
+				CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
+				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
 				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
 				CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */,
