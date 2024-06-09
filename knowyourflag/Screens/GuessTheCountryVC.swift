@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameVC: UIViewController {
+class GuessTheCountryVC: UIViewController {
     
     let flagImageView = UIImageView()
     let scoreLabel = UILabel()

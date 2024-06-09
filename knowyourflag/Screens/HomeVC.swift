@@ -61,7 +61,17 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let gameViewController = GameVC()
-        navigationController?.pushViewController(gameViewController, animated: true)
+        var vc: UIViewController?
+        
+        switch indexPath.row {
+        case 0:
+            vc = GuessTheCountryVC()
+            break
+        default: break
+        }
+        
+        if let vc = vc {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
