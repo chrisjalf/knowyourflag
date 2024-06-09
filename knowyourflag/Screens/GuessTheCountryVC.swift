@@ -28,7 +28,7 @@ class GuessTheCountryVC: UIViewController {
         
         view.backgroundColor = .systemBackground
         configureFlagImageView()
-        pickCountriesFlag()
+        pickCountries()
         configureScoreLabel()
         configureCountryChoiceViews()
     }
@@ -40,7 +40,7 @@ class GuessTheCountryVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
-    private func pickCountriesFlag() {
+    private func pickCountries() {
         var countryIndexSet = Set<Int>()
         var selectedCountries = [Country]()
         
@@ -146,7 +146,7 @@ class GuessTheCountryVC: UIViewController {
                 self.scoreLabel.text = "\(self.score)"
             }
             
-            self.pickCountriesFlag()
+            self.pickCountries()
             self.setCountryChoiceViewsText()
         }
     }

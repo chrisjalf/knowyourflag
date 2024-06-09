@@ -9,13 +9,13 @@ import UIKit
 
 class GuessTheFlagVC: UIViewController {
     
-    let flagImageView = UIImageView()
+    let countryLabelView = UILabel()
     let scoreLabel = UILabel()
     var choiceViews = [
-        KYFCountryChoiceView(),
-        KYFCountryChoiceView(),
-        KYFCountryChoiceView(),
-        KYFCountryChoiceView()
+        KYFFlagChoiceView(),
+        KYFFlagChoiceView(),
+        KYFFlagChoiceView(),
+        KYFFlagChoiceView()
     ]
     
     var selectedCountriesIndex = [Int]()
@@ -27,10 +27,10 @@ class GuessTheFlagVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        configureFlagImageView()
-        pickCountriesFlag()
+        configureCountryLabelView()
+        pickCountries()
         configureScoreLabel()
-        configureCountryChoiceViews()
+        configureCountryFlagChoiceViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +40,7 @@ class GuessTheFlagVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
-    private func pickCountriesFlag() {
+    private func pickCountries() {
         var countryIndexSet = Set<Int>()
         var selectedCountries = [Country]()
         
@@ -58,28 +58,25 @@ class GuessTheFlagVC: UIViewController {
         
         selectedCountryIndex = Int.random(in: 0...selectedCountries.count - 1)
         
-        setFlagImage()
+        setCountryLabel()
     }
     
-    private func configureFlagImageView() {
-        view.addSubview(flagImageView)
-        flagImageView.translatesAutoresizingMaskIntoConstraints = false
-        flagImageView.layer.borderColor = UIColor.gray.cgColor
-        flagImageView.layer.borderWidth = 1.0
-        flagImageView.layer.cornerRadius = 10.0
-        flagImageView.clipsToBounds = true
+    private func configureCountryLabelView() {
+        view.addSubview(countryLabelView)
+        countryLabelView.translatesAutoresizingMaskIntoConstraints = false
+        countryLabelView.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        countryLabelView.textAlignment = .center
+        countryLabelView.numberOfLines = 0
         
         NSLayoutConstraint.activate([
-            flagImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            flagImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            flagImageView.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.8),
-            flagImageView.heightAnchor.constraint(equalTo: flagImageView.widthAnchor),
+            countryLabelView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            countryLabelView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
-    private func setFlagImage() {
+    private func setCountryLabel() {
         let selectedCountry = Country.all[selectedCountriesIndex[selectedCountryIndex]]
-        flagImageView.image = UIImage(named: selectedCountry.code)
+        countryLabelView.text = selectedCountry.name
     }
     
     private func configureScoreLabel() {
@@ -95,14 +92,14 @@ class GuessTheFlagVC: UIViewController {
         scoreLabel.layer.cornerRadius = height / 2
         
         NSLayoutConstraint.activate([
-            scoreLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
+            scoreLabel.topAnchor.constraint(equalTo: countryLabelView.bottomAnchor, constant: 20),
             scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             scoreLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
             scoreLabel.heightAnchor.constraint(equalToConstant: height)
         ])
     }
     
-    private func configureCountryChoiceViews() {
+    private func configureCountryFlagChoiceViews() {
         var prev = choiceViews.first!
         
         for (index, choiceView) in choiceViews.enumerated() {
@@ -126,14 +123,14 @@ class GuessTheFlagVC: UIViewController {
             }
         }
         
-        setCountryChoiceViewsText()
+        setCountryFlagChoiceViewsText()
     }
     
-    private func setCountryChoiceViewsText() {
+    private func setCountryFlagChoiceViewsText() {
         for i in 0...selectedCountriesIndex.count - 1 {
             let tapGesture = KYFCountryChoiceGestureRecognizer(target: self, action: #selector(evaluateChoice))
             tapGesture.selectedCountryIndex = i
-            choiceViews[i].setCountry(country: Country.all[selectedCountriesIndex[i]].name)
+            choiceViews[i].setFlag(image: UIImage(named: Country.all[selectedCountriesIndex[i]].code)!)
             choiceViews[i].isUserInteractionEnabled = true
             choiceViews[i].addGestureRecognizer(tapGesture)
         }
@@ -146,8 +143,8 @@ class GuessTheFlagVC: UIViewController {
                 self.scoreLabel.text = "\(self.score)"
             }
             
-            self.pickCountriesFlag()
-            self.setCountryChoiceViewsText()
+            self.pickCountries()
+            self.setCountryFlagChoiceViewsText()
         }
     }
 }

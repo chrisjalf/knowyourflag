@@ -67,6 +67,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case 0:
             vc = GuessTheCountryVC()
             break
+        case 1:
+            vc = GuessTheFlagVC()
         default: break
         }
         
