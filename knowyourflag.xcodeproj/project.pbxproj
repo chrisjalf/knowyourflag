@@ -19,8 +19,12 @@
 		CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D582C0D974B0066177C /* KYFBodyLabel.swift */; };
 		CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */; };
 		CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5C2C0D97A10066177C /* KYFButton.swift */; };
-		CC770D5F2C0D9E380066177C /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5E2C0D9E380066177C /* GameVC.swift */; };
+		CC770D5F2C0D9E380066177C /* GuessTheCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */; };
 		CC770D642C0DCF910066177C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D632C0DCF910066177C /* Country.swift */; };
+		CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */; };
+		CC7869242C15C26200A96B57 /* KYFFlagChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */; };
+		CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */; };
+		CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
 		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
@@ -44,8 +48,12 @@
 		CC770D582C0D974B0066177C /* KYFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFBodyLabel.swift; sourceTree = "<group>"; };
 		CC770D5A2C0D97750066177C /* KYFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		CC770D5C2C0D97A10066177C /* KYFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFButton.swift; sourceTree = "<group>"; };
-		CC770D5E2C0D9E380066177C /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheCountryVC.swift; sourceTree = "<group>"; };
 		CC770D632C0DCF910066177C /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagVC.swift; sourceTree = "<group>"; };
+		CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFFlagChoiceView.swift; sourceTree = "<group>"; };
+		CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceView.swift; sourceTree = "<group>"; };
+		CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceGestureRecognizer.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				CC7B8E912C060972002AC0CD /* HomeVC.swift */,
-				CC770D5E2C0D9E380066177C /* GameVC.swift */,
+				CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */,
+				CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -82,6 +91,7 @@
 		CC6ADFD52C0CA68700326DE9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CC7B117D2C134EEA004A86C8 /* Views */,
 				CC770D552C0D970A0066177C /* Buttons */,
 				CC770D542C0D97010066177C /* Labels */,
 				CC770D512C0D96B40066177C /* ViewControllers */,
@@ -172,8 +182,18 @@
 			isa = PBXGroup;
 			children = (
 				CC770D632C0DCF910066177C /* Country.swift */,
+				CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CC7B117D2C134EEA004A86C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */,
+				CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D4537A9D108C2C1C8F7E1E4C /* Pods */ = {
@@ -325,6 +345,7 @@
 			files = (
 				CC770D502C0D962E0066177C /* UIViewController+Ext.swift in Sources */,
 				CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */,
+				CC7869242C15C26200A96B57 /* KYFFlagChoiceView.swift in Sources */,
 				CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */,
 				CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */,
 				CC770D642C0DCF910066177C /* Country.swift in Sources */,
@@ -333,8 +354,11 @@
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
+				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
+				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
-				CC770D5F2C0D9E380066177C /* GameVC.swift in Sources */,
+				CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */,
+				CC770D5F2C0D9E380066177C /* GuessTheCountryVC.swift in Sources */,
 				CC770D5B2C0D97750066177C /* KYFSecondaryTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

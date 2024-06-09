@@ -10,7 +10,7 @@ import UIKit
 class HomeVC: UIViewController {
     
     var collectionView: UICollectionView!
-    let modes = ["Guess The Country", "Guess The Flag", "TickTackToe", "Puzzle"]
+    let modes = ["Guess The Country", "Guess The Flag"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func configureCollectionView() {
@@ -61,7 +62,20 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let gameViewController = GameVC()
-        navigationController?.pushViewController(gameViewController, animated: true)
+        var vc: UIViewController?
+        
+        switch indexPath.row {
+        case 0:
+            vc = GuessTheCountryVC()
+            break
+        case 1:
+            vc = GuessTheFlagVC()
+        default: break
+        }
+        
+        if let vc = vc {
+            navigationController?.pushViewController(vc, animated: true)
+//            presentAlertOnMainThread(title: "ABC", message: "DEF", buttonTitle: "GHI")
+        }
     }
 }
