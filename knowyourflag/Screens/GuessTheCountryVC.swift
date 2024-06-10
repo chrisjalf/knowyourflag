@@ -152,4 +152,8 @@ class GuessTheCountryVC: UIViewController {
             self.setCountryChoiceViewsText()
         }
     }
+    
+    func testing() {
+        print("test")
+    }
 }

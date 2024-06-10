@@ -12,11 +12,13 @@ class KYFCountdownVC: UIViewController {
     let containerView = UIView()
     let countdownLabel = UILabel()
     
+    var callingVC: UIViewController?
     var startingNumber: Int?
     var timer = Timer()
     
-    init(startingNumber: Int) {
+    init(vc: UIViewController, startingNumber: Int) {
         super.init(nibName: nil, bundle: nil)
+        self.callingVC = vc
         self.startingNumber = startingNumber
     }
     
@@ -83,5 +85,14 @@ class KYFCountdownVC: UIViewController {
     
     @objc private func dismissVC() {
         dismiss(animated: true)
+        
+        switch callingVC {
+        case is GuessTheCountryVC:
+            let vc = callingVC as! GuessTheCountryVC
+            vc.testing()
+            break
+        default:
+            break
+        }
     }
 }

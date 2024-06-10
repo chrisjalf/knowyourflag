@@ -19,7 +19,7 @@ extension UIViewController {
     
     func presentCountdownOnMainThread(startingNumber: Int) {
         DispatchQueue.main.async {
-            let countdownVC = KYFCountdownVC(startingNumber: startingNumber)
+            let countdownVC = KYFCountdownVC(vc: self, startingNumber: startingNumber)
             countdownVC.modalPresentationStyle = .overFullScreen
             countdownVC.modalTransitionStyle = .crossDissolve
             self.present(countdownVC, animated: true)
