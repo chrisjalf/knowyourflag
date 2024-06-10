@@ -94,6 +94,10 @@ class KYFAlertVC: UIViewController {
         ])
     }
     
+    func setMessageLabelText(message: String) {
+        messageLabel.text = message
+    }
+    
     @objc private func dismissVC() {
         dismiss(animated: true)
     }
