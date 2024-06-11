@@ -31,6 +31,7 @@ class KYFCountryChoiceView: UIView {
         countryLabel.textColor = .label
         countryLabel.adjustsFontSizeToFitWidth = true
         countryLabel.minimumScaleFactor = 0.9
+        countryLabel.numberOfLines = 0
         countryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

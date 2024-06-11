@@ -10,6 +10,7 @@ import UIKit
 class GuessTheCountryVC: UIViewController {
     
     let flagImageView = UIImageView()
+    let remaingTimeLabel = UILabel()
     let scoreLabel = UILabel()
     var choiceViews = [
         KYFCountryChoiceView(),
@@ -22,6 +23,18 @@ class GuessTheCountryVC: UIViewController {
     var selectedCountryIndex = -1
     
     var score = 0
+    var remainingTime = 0
+    
+    var gameTimer = Timer()
+    
+    init(remainingTime: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.remainingTime = remainingTime
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +42,7 @@ class GuessTheCountryVC: UIViewController {
         view.backgroundColor = .systemBackground
         configureFlagImageView()
         pickCountries()
+        configureRemainingTimeLabel()
         configureScoreLabel()
         configureCountryChoiceViews()
         
@@ -82,6 +96,26 @@ class GuessTheCountryVC: UIViewController {
     private func setFlagImage() {
         let selectedCountry = Country.all[selectedCountriesIndex[selectedCountryIndex]]
         flagImageView.image = UIImage(named: selectedCountry.code)
+    }
+    
+    private func configureRemainingTimeLabel() {
+        let height = CGFloat(75)
+        
+        view.addSubview(remaingTimeLabel)
+        remaingTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        remaingTimeLabel.text = "\(remainingTime)"
+        remaingTimeLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        remaingTimeLabel.textAlignment = .center
+        remaingTimeLabel.backgroundColor = .systemPink
+        remaingTimeLabel.layer.masksToBounds = true
+        remaingTimeLabel.layer.cornerRadius = height / 2
+        
+        NSLayoutConstraint.activate([
+            remaingTimeLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
+            remaingTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            remaingTimeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
+            remaingTimeLabel.heightAnchor.constraint(equalToConstant: height)
+        ])
     }
     
     private func configureScoreLabel() {
@@ -153,7 +187,19 @@ class GuessTheCountryVC: UIViewController {
         }
     }
     
-    func testing() {
-        print("test")
+    func startGameTimer() {
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func countdown() {
+        remainingTime -= 1
+        
+        DispatchQueue.main.async {
+            self.remaingTimeLabel.text = "\(self.remainingTime)"
+        }
+        
+        if remainingTime == 0 {
+            gameTimer.invalidate()
+        }
     }
 }

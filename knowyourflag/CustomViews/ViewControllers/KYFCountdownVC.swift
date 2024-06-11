@@ -89,7 +89,7 @@ class KYFCountdownVC: UIViewController {
         switch callingVC {
         case is GuessTheCountryVC:
             let vc = callingVC as! GuessTheCountryVC
-            vc.testing()
+            vc.startGameTimer()
             break
         default:
             break
