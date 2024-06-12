@@ -200,6 +200,11 @@ class GuessTheCountryVC: UIViewController {
         
         if remainingTime == 0 {
             gameTimer.invalidate()
+            presentAlertOnMainThread(title: "Time's Up", message: "Game Over", buttonTitle: "Exit", buttonPostDismissAction: popVC)
         }
+    }
+    
+    private func popVC() {
+        navigationController?.popViewController(animated: true)
     }
 }
