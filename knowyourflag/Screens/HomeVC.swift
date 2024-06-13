@@ -75,7 +75,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if let vc = vc {
             navigationController?.pushViewController(vc, animated: true)
-//            presentAlertOnMainThread(title: "ABC", message: "DEF", buttonTitle: "GHI")
         }
     }
 }
