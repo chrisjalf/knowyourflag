@@ -10,7 +10,7 @@ import UIKit
 class GuessTheCountryVC: UIViewController {
     
     let flagImageView = UIImageView()
-    let remaingTimeLabel = UILabel()
+    let remainingTimeLabel = UILabel()
     let scoreLabel = UILabel()
     var choiceViews = [
         KYFCountryChoiceView(),
@@ -101,20 +101,21 @@ class GuessTheCountryVC: UIViewController {
     private func configureRemainingTimeLabel() {
         let height = CGFloat(75)
         
-        view.addSubview(remaingTimeLabel)
-        remaingTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        remaingTimeLabel.text = "\(remainingTime)"
-        remaingTimeLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        remaingTimeLabel.textAlignment = .center
-        remaingTimeLabel.backgroundColor = .systemPink
-        remaingTimeLabel.layer.masksToBounds = true
-        remaingTimeLabel.layer.cornerRadius = height / 2
+        view.addSubview(remainingTimeLabel)
+        remainingTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        remainingTimeLabel.text = "\(remainingTime)"
+        remainingTimeLabel.textColor = .systemBackground
+        remainingTimeLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        remainingTimeLabel.textAlignment = .center
+        remainingTimeLabel.backgroundColor = .label
+        remainingTimeLabel.layer.masksToBounds = true
+        remainingTimeLabel.layer.cornerRadius = height / 2
         
         NSLayoutConstraint.activate([
-            remaingTimeLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
-            remaingTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            remaingTimeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
-            remaingTimeLabel.heightAnchor.constraint(equalToConstant: height)
+            remainingTimeLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
+            remainingTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            remainingTimeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
+            remainingTimeLabel.heightAnchor.constraint(equalToConstant: height)
         ])
     }
     
@@ -195,7 +196,7 @@ class GuessTheCountryVC: UIViewController {
         remainingTime -= 1
         
         DispatchQueue.main.async {
-            self.remaingTimeLabel.text = "\(self.remainingTime)"
+            self.remainingTimeLabel.text = "\(self.remainingTime)"
         }
         
         if remainingTime == 0 {
