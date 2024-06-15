@@ -29,6 +29,7 @@
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
 		CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204132C1DDC39000C2B80 /* RealmManager.swift */; };
+		CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */; };
 		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCE204132C1DDC39000C2B80 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultObjectModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
+				CCE204152C1DDF6E000C2B80 /* RealmObjectModel */,
 				CCE204122C1DDC2B000C2B80 /* Managers */,
 				CC770D622C0DCF850066177C /* Models */,
 				CC770D4E2C0D96190066177C /* Extensions */,
@@ -208,6 +211,14 @@
 				CCE204132C1DDC39000C2B80 /* RealmManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		CCE204152C1DDF6E000C2B80 /* RealmObjectModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */,
+			);
+			path = RealmObjectModel;
 			sourceTree = "<group>";
 		};
 		D4537A9D108C2C1C8F7E1E4C /* Pods */ = {
@@ -368,6 +379,7 @@
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
+				CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */,
 				CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */,
 				CC784AA72C17304F00232EF7 /* KYFCountdownVC.swift in Sources */,
 				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,

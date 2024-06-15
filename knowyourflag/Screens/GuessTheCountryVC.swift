@@ -26,10 +26,20 @@ class GuessTheCountryVC: UIViewController {
     var remainingTime = 0
     
     var gameTimer = Timer()
+    var gameMode: GameMode!
     
     init(remainingTime: Int) {
         super.init(nibName: nil, bundle: nil)
         self.remainingTime = remainingTime
+        
+        switch self.remainingTime {
+        case 0:
+            gameMode = .unlimited
+            break
+        default:
+            gameMode = .sixtySeconds
+            break
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -201,11 +211,15 @@ class GuessTheCountryVC: UIViewController {
         
         if remainingTime == 0 {
             gameTimer.invalidate()
-            presentAlertOnMainThread(title: "Time's Up", message: "Game Over", buttonTitle: "Exit", buttonPostDismissAction: popVC)
+            presentAlertOnMainThread(title: "Time's Up", message: "Game Over", buttonTitle: "Exit", buttonPostDismissAction: exitVC)
         }
     }
     
-    private func popVC() {
+    private func exitVC() {
+        let gameResult = GameResultObjectModel(gameType: .guessTheCountry, gameMode: gameMode, score: Int64(score))
+        let realm = RealmManager.sharedInstance
+        realm.save(object: gameResult)
+        
         navigationController?.popViewController(animated: true)
     }
 }
