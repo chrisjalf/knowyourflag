@@ -216,7 +216,12 @@ class GuessTheCountryVC: UIViewController {
     }
     
     private func exitVC() {
-        let gameResult = GameResultObjectModel(gameType: .guessTheCountry, gameMode: gameMode, score: Int64(score))
+        let gameResult = GameResultObjectModel(
+            gameType: .guessTheCountry,
+            gameMode: gameMode,
+            score: Int64(score),
+            time: Int64(Date().timeIntervalSince1970 * 1000)
+        )
         let realm = RealmManager.sharedInstance
         realm.save(object: gameResult)
         

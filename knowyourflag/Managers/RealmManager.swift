@@ -10,7 +10,7 @@ import RealmSwift
 
 class RealmManager {
     private var database: Realm!
-    private let schemaVersion: UInt64 = 0
+    private let schemaVersion: UInt64 = 1
     
     /// The shared instance of the realm manager.
     static let sharedInstance = RealmManager()

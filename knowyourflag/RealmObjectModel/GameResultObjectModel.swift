@@ -13,16 +13,19 @@ class GameResultObjectModel: Object {
     @Persisted var gameType: GameType.RawValue
     @Persisted var gameMode: GameMode.RawValue
     @Persisted var score: Int64
+    @Persisted var time: Int64 = 0
     
     convenience init(
         gameType: GameType,
         gameMode: GameMode,
-        score: Int64
+        score: Int64,
+        time: Int64
     ) {
         self.init()
         self.gameType = gameType.rawValue
         self.gameMode = gameMode.rawValue
         self.score = score
+        self.time = time
     }
 }
 
