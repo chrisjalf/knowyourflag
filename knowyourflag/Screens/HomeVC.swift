@@ -66,7 +66,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         switch indexPath.row {
         case 0:
-            vc = GuessTheCountryVC()
+            vc = GuessTheCountryVC(remainingTime: 60)
             break
         case 1:
             vc = GuessTheFlagVC()
@@ -75,7 +75,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if let vc = vc {
             navigationController?.pushViewController(vc, animated: true)
-//            presentAlertOnMainThread(title: "ABC", message: "DEF", buttonTitle: "GHI")
         }
     }
 }

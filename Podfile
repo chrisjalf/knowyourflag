@@ -18,5 +18,6 @@ target 'knowyourflag' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseCrashlytics'
+  pod 'RealmSwift'
 
 end

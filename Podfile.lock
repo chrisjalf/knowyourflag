@@ -1171,6 +1171,11 @@ PODS:
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
+  - Realm (10.51.0):
+    - Realm/Headers (= 10.51.0)
+  - Realm/Headers (10.51.0)
+  - RealmSwift (10.51.0):
+    - Realm (= 10.51.0)
   - RecaptchaInterop (100.0.0)
 
 DEPENDENCIES:
@@ -1178,6 +1183,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseCrashlytics
   - FirebaseFirestore
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
@@ -1206,6 +1212,8 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PromisesSwift
+    - Realm
+    - RealmSwift
     - RecaptchaInterop
 
 SPEC CHECKSUMS:
@@ -1234,8 +1242,10 @@ SPEC CHECKSUMS:
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  Realm: 7e75a684c16aca7c6a5db9c70caebf37f07dcee5
+  RealmSwift: 35bdffb8a504659d1b3e3f45b624e93ac0ec89e3
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: ba57f8c5755d373d4d41318de1b919c475a5f358
+PODFILE CHECKSUM: fbafa26a5074f1750d45e3313a573751cc8f4aea
 
 COCOAPODS: 1.15.2

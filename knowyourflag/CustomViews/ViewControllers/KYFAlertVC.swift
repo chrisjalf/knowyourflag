@@ -8,7 +8,7 @@
 import UIKit
 
 class KYFAlertVC: UIViewController {
-
+    
     let containerView = UIView()
     let titleLabel = KYFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel = KYFBodyLabel(textAlignment: .center)
@@ -17,14 +17,16 @@ class KYFAlertVC: UIViewController {
     var alertTitle: String?
     var message: String?
     var buttonTitle: String?
+    var buttonPostDismissAction: (() -> Void)!
     
     let padding: CGFloat = 20
     
-    init(title: String, message: String, buttonTitle: String) {
+    init(title: String, message: String, buttonTitle: String, buttonPostDismissAction: @escaping () -> Void) {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle = title
         self.message = message
         self.buttonTitle = buttonTitle
+        self.buttonPostDismissAction = buttonPostDismissAction
     }
     
     required init?(coder: NSCoder) {
@@ -94,8 +96,12 @@ class KYFAlertVC: UIViewController {
         ])
     }
     
+    func setMessageLabelText(message: String) {
+        messageLabel.text = message
+    }
+    
     @objc private func dismissVC() {
         dismiss(animated: true)
+        buttonPostDismissAction()
     }
-
 }

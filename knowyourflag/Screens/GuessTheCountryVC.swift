@@ -10,6 +10,7 @@ import UIKit
 class GuessTheCountryVC: UIViewController {
     
     let flagImageView = UIImageView()
+    let remainingTimeLabel = UILabel()
     let scoreLabel = UILabel()
     var choiceViews = [
         KYFCountryChoiceView(),
@@ -22,9 +23,28 @@ class GuessTheCountryVC: UIViewController {
     var selectedCountryIndex = -1
     
     var score = 0
+    var remainingTime = 0
     
-    var startingNumber = 10
-    var timer = Timer()
+    var gameTimer = Timer()
+    var gameMode: GameMode!
+    
+    init(remainingTime: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.remainingTime = remainingTime
+        
+        switch self.remainingTime {
+        case 0:
+            gameMode = .unlimited
+            break
+        default:
+            gameMode = .sixtySeconds
+            break
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,21 +52,11 @@ class GuessTheCountryVC: UIViewController {
         view.backgroundColor = .systemBackground
         configureFlagImageView()
         pickCountries()
+        configureRemainingTimeLabel()
         configureScoreLabel()
         configureCountryChoiceViews()
         
-        // test timer
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-    }
-    
-    @objc private func countDown() {
-        startingNumber -= 1
-        
-        if startingNumber == 0 {
-            timer.invalidate()
-        }
-        
-        print("startingNumber: \(startingNumber)")
+        presentCountdownOnMainThread(startingNumber: 3)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +106,27 @@ class GuessTheCountryVC: UIViewController {
     private func setFlagImage() {
         let selectedCountry = Country.all[selectedCountriesIndex[selectedCountryIndex]]
         flagImageView.image = UIImage(named: selectedCountry.code)
+    }
+    
+    private func configureRemainingTimeLabel() {
+        let height = CGFloat(75)
+        
+        view.addSubview(remainingTimeLabel)
+        remainingTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        remainingTimeLabel.text = "\(remainingTime)"
+        remainingTimeLabel.textColor = .systemBackground
+        remainingTimeLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        remainingTimeLabel.textAlignment = .center
+        remainingTimeLabel.backgroundColor = .label
+        remainingTimeLabel.layer.masksToBounds = true
+        remainingTimeLabel.layer.cornerRadius = height / 2
+        
+        NSLayoutConstraint.activate([
+            remainingTimeLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
+            remainingTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            remainingTimeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: height),
+            remainingTimeLabel.heightAnchor.constraint(equalToConstant: height)
+        ])
     }
     
     private func configureScoreLabel() {
@@ -165,5 +196,35 @@ class GuessTheCountryVC: UIViewController {
             self.pickCountries()
             self.setCountryChoiceViewsText()
         }
+    }
+    
+    func startGameTimer() {
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func countdown() {
+        remainingTime -= 1
+        
+        DispatchQueue.main.async {
+            self.remainingTimeLabel.text = "\(self.remainingTime)"
+        }
+        
+        if remainingTime == 0 {
+            gameTimer.invalidate()
+            presentAlertOnMainThread(title: "Time's Up", message: "Game Over", buttonTitle: "Exit", buttonPostDismissAction: exitVC)
+        }
+    }
+    
+    private func exitVC() {
+        let gameResult = GameResultObjectModel(
+            gameType: .guessTheCountry,
+            gameMode: gameMode,
+            score: Int64(score),
+            time: Int64(Date().timeIntervalSince1970 * 1000)
+        )
+        let realm = RealmManager.sharedInstance
+        realm.save(object: gameResult)
+        
+        navigationController?.popViewController(animated: true)
     }
 }

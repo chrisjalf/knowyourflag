@@ -21,12 +21,15 @@
 		CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5C2C0D97A10066177C /* KYFButton.swift */; };
 		CC770D5F2C0D9E380066177C /* GuessTheCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */; };
 		CC770D642C0DCF910066177C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC770D632C0DCF910066177C /* Country.swift */; };
+		CC784AA72C17304F00232EF7 /* KYFCountdownVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC784AA62C17304F00232EF7 /* KYFCountdownVC.swift */; };
 		CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */; };
 		CC7869242C15C26200A96B57 /* KYFFlagChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */; };
 		CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */; };
 		CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
+		CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204132C1DDC39000C2B80 /* RealmManager.swift */; };
+		CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */; };
 		EAE17B743ADA3A31031E024E /* Pods_knowyourflag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,12 +53,15 @@
 		CC770D5C2C0D97A10066177C /* KYFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFButton.swift; sourceTree = "<group>"; };
 		CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheCountryVC.swift; sourceTree = "<group>"; };
 		CC770D632C0DCF910066177C /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		CC784AA62C17304F00232EF7 /* KYFCountdownVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountdownVC.swift; sourceTree = "<group>"; };
 		CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagVC.swift; sourceTree = "<group>"; };
 		CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFFlagChoiceView.swift; sourceTree = "<group>"; };
 		CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceView.swift; sourceTree = "<group>"; };
 		CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceGestureRecognizer.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CCE204132C1DDC39000C2B80 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultObjectModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,8 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
+				CCE204152C1DDF6E000C2B80 /* RealmObjectModel */,
+				CCE204122C1DDC2B000C2B80 /* Managers */,
 				CC770D622C0DCF850066177C /* Models */,
 				CC770D4E2C0D96190066177C /* Extensions */,
 				CC6ADFD52C0CA68700326DE9 /* CustomViews */,
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				CC770D522C0D96DB0066177C /* KYFAlertVC.swift */,
+				CC784AA62C17304F00232EF7 /* KYFCountdownVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -194,6 +203,22 @@
 				CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CCE204122C1DDC2B000C2B80 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CCE204132C1DDC39000C2B80 /* RealmManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CCE204152C1DDF6E000C2B80 /* RealmObjectModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */,
+			);
+			path = RealmObjectModel;
 			sourceTree = "<group>";
 		};
 		D4537A9D108C2C1C8F7E1E4C /* Pods */ = {
@@ -354,6 +379,9 @@
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
+				CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */,
+				CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */,
+				CC784AA72C17304F00232EF7 /* KYFCountdownVC.swift in Sources */,
 				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
 				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
