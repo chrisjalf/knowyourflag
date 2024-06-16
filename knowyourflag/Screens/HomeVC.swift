@@ -18,6 +18,20 @@ class HomeVC: UIViewController {
         view.backgroundColor = .systemBackground
         
         configureCollectionView()
+        
+        let apiManager = APIManager.shared
+        apiManager.test { [weak self] result in
+            guard let _ = self else { return }
+            
+            switch result {
+            case .success(let a):
+                print("a: \(a)")
+                break
+            case .failure(let error):
+                print("error: \(error)")
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
