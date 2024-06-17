@@ -17,6 +17,29 @@ extension UIViewController {
         }
     }
     
+    func presentAlertOnMainThread(
+        title: String,
+        message: String,
+        confirmButtonTitle: String,
+        confirmButtonPostDismissAction: @escaping () -> Void = {},
+        cancelButtonTitle: String,
+        cancelButtonPostDismissAction: @escaping () -> Void = {}
+    ) {
+        DispatchQueue.main.async {
+            let alertVC = KYFAlertVC(
+                title: title,
+                message: message,
+                confirmButtonTitle: confirmButtonTitle,
+                confirmButtonPostDismissAction: confirmButtonPostDismissAction,
+                cancelButtonTitle: cancelButtonTitle,
+                cancelButtonPostDismissAction: cancelButtonPostDismissAction
+            )
+            alertVC.modalPresentationStyle = .overFullScreen
+            alertVC.modalTransitionStyle = .crossDissolve
+            self.present(alertVC, animated: true)
+        }
+    }
+    
     func presentCountdownOnMainThread(startingNumber: Int) {
         DispatchQueue.main.async {
             let countdownVC = KYFCountdownVC(vc: self, startingNumber: startingNumber)

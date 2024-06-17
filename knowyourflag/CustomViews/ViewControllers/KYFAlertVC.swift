@@ -13,11 +13,17 @@ class KYFAlertVC: UIViewController {
     let titleLabel = KYFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel = KYFBodyLabel(textAlignment: .center)
     let actionButton = KYFButton(backgroundColor: .systemPink, title: "Ok")
+    let cancelButton = KYFButton(backgroundColor: .gray, title: "Cancel")
+    let buttonStackView = UIStackView()
     
     var alertTitle: String?
     var message: String?
-    var buttonTitle: String?
-    var buttonPostDismissAction: (() -> Void)!
+    var confirmButtonTitle: String?
+    var confirmButtonPostDismissAction: (() -> Void)!
+    
+    // optional
+    var cancelButtonTitle: String?
+    var cancelButtonPostDismissAction: (() -> Void)!
     
     let padding: CGFloat = 20
     
@@ -25,8 +31,25 @@ class KYFAlertVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle = title
         self.message = message
-        self.buttonTitle = buttonTitle
-        self.buttonPostDismissAction = buttonPostDismissAction
+        self.confirmButtonTitle = buttonTitle
+        self.confirmButtonPostDismissAction = buttonPostDismissAction
+    }
+    
+    init(
+        title: String,
+        message: String,
+        confirmButtonTitle: String,
+        confirmButtonPostDismissAction: @escaping () -> Void,
+        cancelButtonTitle: String,
+        cancelButtonPostDismissAction: @escaping () -> Void
+    ) {
+        super.init(nibName: nil, bundle: nil)
+        self.alertTitle = title
+        self.message = message
+        self.confirmButtonTitle = confirmButtonTitle
+        self.confirmButtonPostDismissAction = confirmButtonPostDismissAction
+        self.cancelButtonTitle = cancelButtonTitle
+        self.cancelButtonPostDismissAction = cancelButtonPostDismissAction
     }
     
     required init?(coder: NSCoder) {
@@ -38,7 +61,13 @@ class KYFAlertVC: UIViewController {
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         configureContainerView()
         configureTitleLabel()
-        configureActionButton()
+        
+        if let _  = cancelButtonTitle {
+            configureActionButtons()
+        } else {
+            configureActionButton()
+        }
+        
         configureMessageLabel()
     }
     
@@ -72,7 +101,7 @@ class KYFAlertVC: UIViewController {
     
     private func configureActionButton() {
         containerView.addSubview(actionButton)
-        actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
+        actionButton.setTitle(confirmButtonTitle ?? "Ok", for: .normal)
         actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -83,16 +112,43 @@ class KYFAlertVC: UIViewController {
         ])
     }
     
+    private func configureActionButtons() {
+        containerView.addSubview(buttonStackView)
+        
+        actionButton.setTitle(confirmButtonTitle ?? "Ok", for: .normal)
+        actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        
+        cancelButton.setTitle(cancelButtonTitle ?? "Cancel", for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        
+        buttonStackView.axis = .horizontal
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.spacing = 10
+        buttonStackView.addArrangedSubview(cancelButton)
+        buttonStackView.addArrangedSubview(actionButton)
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        NSLayoutConstraint.activate([
+            buttonStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+            buttonStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            buttonStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
     private func configureMessageLabel() {
         containerView.addSubview(messageLabel)
         messageLabel.text = message ?? "Unable to complete request"
         messageLabel.numberOfLines = 4
         
+        let bottomAnchorTarget = (cancelButtonTitle != nil) ? buttonStackView.topAnchor : actionButton.topAnchor
+        
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-            messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12)
+            messageLabel.bottomAnchor.constraint(equalTo: bottomAnchorTarget, constant: -12)
         ])
     }
     
@@ -102,6 +158,11 @@ class KYFAlertVC: UIViewController {
     
     @objc private func dismissVC() {
         dismiss(animated: true)
-        buttonPostDismissAction()
+        confirmButtonPostDismissAction()
+    }
+    
+    @objc private func cancel() {
+        dismiss(animated: true)
+        cancelButtonPostDismissAction()
     }
 }
