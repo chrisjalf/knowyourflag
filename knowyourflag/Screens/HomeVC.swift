@@ -19,7 +19,7 @@ class HomeVC: UIViewController {
         
         configureCollectionView()
         
-        let apiManager = APIManager.shared
+        /*let apiManager = APIManager.shared
         apiManager.test { [weak self] result in
             guard let _ = self else { return }
             
@@ -31,7 +31,7 @@ class HomeVC: UIViewController {
                 print("error: \(error)")
                 break
             }
-        }
+        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
