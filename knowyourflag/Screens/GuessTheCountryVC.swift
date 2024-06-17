@@ -233,12 +233,15 @@ class GuessTheCountryVC: UIViewController {
     }
     
     @objc private func attemptExitVC() {
+        gameTimer.invalidate()
+        
         presentAlertOnMainThread(
             title: "Exit",
             message: "Are you sure?",
             confirmButtonTitle: "Yes",
             confirmButtonPostDismissAction: popVC,
-            cancelButtonTitle: "No"
+            cancelButtonTitle: "No",
+            cancelButtonPostDismissAction: startGameTimer
         )
     }
     

@@ -10,7 +10,7 @@ import UIKit
 class HomeVC: UIViewController {
     
     var collectionView: UICollectionView!
-    let modes = ["Guess The Country", "Guess The Flag"]
+    let gameTypes = [GameType.guessTheCountry.rawValue, GameType.guessTheFlag.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,12 +65,12 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modes.count
+        return gameTypes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as? MyCollectionViewCell else { return UICollectionViewCell() }
-        cell.configureLabel(modes[indexPath.row])
+        cell.configureLabel(gameTypes[indexPath.row])
         
         return cell
     }
