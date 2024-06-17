@@ -14,12 +14,14 @@ class KYFCountdownVC: UIViewController {
     
     var callingVC: UIViewController?
     var startingNumber: Int?
+    var postDismissAction: (() -> Void)!
     var timer = Timer()
     
-    init(vc: UIViewController, startingNumber: Int) {
+    init(vc: UIViewController, startingNumber: Int, postDismissAction: @escaping () -> Void = {}) {
         super.init(nibName: nil, bundle: nil)
         self.callingVC = vc
         self.startingNumber = startingNumber
+        self.postDismissAction = postDismissAction
     }
     
     required init?(coder: NSCoder) {
@@ -85,14 +87,6 @@ class KYFCountdownVC: UIViewController {
     
     @objc private func dismissVC() {
         dismiss(animated: true)
-        
-        switch callingVC {
-        case is GuessTheCountryVC:
-            let vc = callingVC as! GuessTheCountryVC
-            vc.startGameTimer()
-            break
-        default:
-            break
-        }
+        postDismissAction()
     }
 }

@@ -60,7 +60,7 @@ class GuessTheCountryVC: UIViewController {
         configureScoreLabel()
         configureCountryChoiceViews()
         
-        presentCountdownOnMainThread(startingNumber: 3)
+        presentCountdownOnMainThread(startingNumber: 3, postDismissAction: gameMode != .unlimited ? startGameTimer : {})
     }
     
     override func viewWillAppear(_ animated: Bool) {
