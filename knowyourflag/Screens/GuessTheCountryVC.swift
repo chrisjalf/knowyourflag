@@ -56,7 +56,11 @@ class GuessTheCountryVC: UIViewController {
         view.backgroundColor = .systemBackground
         configureFlagImageView()
         pickCountries()
-        configureRemainingTimeLabel()
+        
+        if gameMode != .unlimited {
+            configureRemainingTimeLabel()
+        }
+        
         configureScoreLabel()
         configureCountryChoiceViews()
         
