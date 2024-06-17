@@ -49,14 +49,21 @@ class GuessTheCountryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let exitButton = UIBarButtonItem(title: "Exit", style: UIBarButtonItem.Style.plain, target: self, action: #selector(attemptExitVC))
+        navigationItem.leftBarButtonItem = exitButton
+        
         view.backgroundColor = .systemBackground
         configureFlagImageView()
         pickCountries()
-        configureRemainingTimeLabel()
+        
+        if gameMode != .unlimited {
+            configureRemainingTimeLabel()
+        }
+        
         configureScoreLabel()
         configureCountryChoiceViews()
         
-        presentCountdownOnMainThread(startingNumber: 3)
+        presentCountdownOnMainThread(startingNumber: 3, postDismissAction: gameMode != .unlimited ? startGameTimer : {})
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,7 +205,7 @@ class GuessTheCountryVC: UIViewController {
         }
     }
     
-    func startGameTimer() {
+    private func startGameTimer() {
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
     }
     
@@ -211,11 +218,11 @@ class GuessTheCountryVC: UIViewController {
         
         if remainingTime == 0 {
             gameTimer.invalidate()
-            presentAlertOnMainThread(title: "Time's Up", message: "Game Over", buttonTitle: "Exit", buttonPostDismissAction: exitVC)
+            presentAlertOnMainThread(title: "Time's Up", message: "Game Over", buttonTitle: "Exit", buttonPostDismissAction: storeGameResult)
         }
     }
     
-    private func exitVC() {
+    private func storeGameResult() {
         let gameResult = GameResultObjectModel(
             gameType: .guessTheCountry,
             gameMode: gameMode,
@@ -225,6 +232,23 @@ class GuessTheCountryVC: UIViewController {
         let realm = RealmManager.sharedInstance
         realm.save(object: gameResult)
         
+        popVC()
+    }
+    
+    @objc private func attemptExitVC() {
+        gameTimer.invalidate()
+        
+        presentAlertOnMainThread(
+            title: "Exit",
+            message: "Are you sure?",
+            confirmButtonTitle: "Yes",
+            confirmButtonPostDismissAction: popVC,
+            cancelButtonTitle: "No",
+            cancelButtonPostDismissAction: startGameTimer
+        )
+    }
+    
+    private func popVC() {
         navigationController?.popViewController(animated: true)
     }
 }
