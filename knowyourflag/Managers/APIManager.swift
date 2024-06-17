@@ -9,7 +9,7 @@ import Foundation
 
 class APIManager {
     
-    static let shared = APIManager()
+    static let sharedInstance = APIManager()
     private let baseUrl = "http://127.0.0.1:3000"
     
     private init() {}

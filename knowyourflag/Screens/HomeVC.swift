@@ -23,19 +23,19 @@ class HomeVC: UIViewController {
         configureCollectionView()
         configureGameModeDropdown()
         
-        /*let apiManager = APIManager.shared
-        apiManager.test { [weak self] result in
-            guard let _ = self else { return }
-            
-            switch result {
-            case .success(let a):
-                print("a: \(a)")
-                break
-            case .failure(let error):
-                print("error: \(error)")
-                break
-            }
-        }*/
+//        let apiManager = APIManager.sharedInstance
+//        apiManager.test { [weak self] result in
+//            guard let _ = self else { return }
+//            
+//            switch result {
+//            case .success(let a):
+//                print("popo: \(a)")
+//                break
+//            case .failure(let error):
+//                print("error: \(error)")
+//                break
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +112,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 case 0:
                     vc = GuessTheCountryVC(remainingTime: remainingTime)
                 case 1:
-                    vc = GuessTheFlagVC()
+                    vc = GuessTheFlagVC(remainingTime: remainingTime)
                 default: break
                 }
                 

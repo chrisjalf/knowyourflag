@@ -49,7 +49,6 @@ class GuessTheCountryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// setup exit button
         let exitButton = UIBarButtonItem(title: "Exit", style: UIBarButtonItem.Style.plain, target: self, action: #selector(attemptExitVC))
         navigationItem.leftBarButtonItem = exitButton
         
@@ -206,7 +205,7 @@ class GuessTheCountryVC: UIViewController {
         }
     }
     
-    func startGameTimer() {
+    private func startGameTimer() {
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
     }
     
