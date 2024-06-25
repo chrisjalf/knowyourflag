@@ -36,12 +36,12 @@ class HomeVC: UIViewController {
 //                break
 //            }
 //        }
-        apiManager.login(request: LoginRequest(email: "", password: "")) { [weak self] result in
+        apiManager.login(request: LoginRequest(email: "chris.w4ac@gmail.com", password: "p4r4d31nd34th")) { [weak self] result in
             guard let _ = self else { return }
             
             switch result {
             case .success(let data):
-                print("token: \(data.access_token)")
+                KeychainManager.sharedInstance.save(data: Data(data.access_token.utf8), service: "access_token", account: "kyf")
                 break
             case .failure(let err):
                 print("error: \(err)")

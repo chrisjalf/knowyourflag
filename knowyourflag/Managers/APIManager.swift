@@ -19,6 +19,12 @@ class APIManager {
     
     private init() {}
     
+    private func getAccessToken() -> String {
+        guard let data = KeychainManager.sharedInstance.read(service: "access_token", account: "kyf") else { return "Token empty" }
+
+        return String(data: data, encoding: .utf8)!
+    }
+    
     func test(completed: @escaping (Result<[GameResult], KYFError>) -> Void) {
         let url = "\(baseUrl)/game-result/test"
         
@@ -93,6 +99,45 @@ class APIManager {
             do {
                 let decoder = JSONDecoder()
                 let payload = try decoder.decode(LoginResponse.self, from: data)
+                completed(.success(payload))
+            } catch {
+                completed(.failure(.error))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func profile(completed: @escaping (Result<ProfileResponse, KYFError>) -> Void) {
+        let url = "\(baseUrl)/user/profile"
+        
+        guard let url = URL(string: url) else {
+            completed(.failure(.error))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.addValue("Bearer \(getAccessToken())", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let _ = error {
+                completed(.failure(.error))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.error))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.error))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let payload = try decoder.decode(ProfileResponse.self, from: data)
                 completed(.success(payload))
             } catch {
                 completed(.failure(.error))

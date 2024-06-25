@@ -26,10 +26,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .white
         tabBarController.tabBar.backgroundColor = .black
-        tabBarController.viewControllers = [createHomeNavigationController()]
+        tabBarController.viewControllers = [createHomeNavigationController(), createProfileNavigationController()]
         
         if #available(iOS 15.0, *) {
-           let appearance = UITabBarAppearance()
+            let appearance = UITabBarAppearance()
             appearance.backgroundEffect = nil
             tabBarController.tabBar.standardAppearance = appearance
         }
@@ -44,6 +44,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         homeVC.tabBarItem.tag = 0
         
         return UINavigationController(rootViewController: homeVC)
+    }
+    
+    func createProfileNavigationController() -> UINavigationController {
+        let profileVC = ProfileVC()
+        profileVC.title = "Profile"
+        profileVC.tabBarItem.image = UIImage(systemName: "person")
+        profileVC.tabBarItem.tag = 1
+        
+        return UINavigationController(rootViewController: profileVC)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
