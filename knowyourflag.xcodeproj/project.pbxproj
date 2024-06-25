@@ -28,6 +28,8 @@
 		CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
+		CCB5A0022C2AB20B00BEFEE7 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */; };
+		CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */; };
 		CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204132C1DDC39000C2B80 /* RealmManager.swift */; };
 		CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */; };
 		CCE3B99B2C1F3C57006147F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE3B99A2C1F3C57006147F6 /* APIManager.swift */; };
@@ -63,6 +65,8 @@
 		CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceGestureRecognizer.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		CCE204132C1DDC39000C2B80 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultObjectModel.swift; sourceTree = "<group>"; };
 		CCE3B99A2C1F3C57006147F6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 		CC770D622C0DCF850066177C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CCB5A0002C2AB1FC00BEFEE7 /* Responses */,
+				CCB59FFF2C2AB1F400BEFEE7 /* Requests */,
 				CC770D632C0DCF910066177C /* Country.swift */,
 				CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */,
 				CCE3B99F2C1F3F4E006147F6 /* GameResult.swift */,
@@ -211,6 +217,22 @@
 				CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CCB59FFF2C2AB1F400BEFEE7 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		CCB5A0002C2AB1FC00BEFEE7 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		CCE204122C1DDC2B000C2B80 /* Managers */ = {
@@ -399,9 +421,11 @@
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
+				CCB5A0022C2AB20B00BEFEE7 /* LoginResponse.swift in Sources */,
 				CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */,
 				CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */,
 				CC784AA72C17304F00232EF7 /* KYFCountdownVC.swift in Sources */,
+				CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */,
 				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
 				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,

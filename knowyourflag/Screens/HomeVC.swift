@@ -23,7 +23,7 @@ class HomeVC: UIViewController {
         configureCollectionView()
         configureGameModeDropdown()
         
-//        let apiManager = APIManager.sharedInstance
+        let apiManager = APIManager.sharedInstance
 //        apiManager.test { [weak self] result in
 //            guard let _ = self else { return }
 //            
@@ -36,6 +36,18 @@ class HomeVC: UIViewController {
 //                break
 //            }
 //        }
+        apiManager.login(request: LoginRequest(email: "", password: "")) { [weak self] result in
+            guard let _ = self else { return }
+            
+            switch result {
+            case .success(let data):
+                print("token: \(data.access_token)")
+                break
+            case .failure(let err):
+                print("error: \(err)")
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
