@@ -44,7 +44,7 @@ class HomeVC: UIViewController {
                 KeychainManager.sharedInstance.save(data: Data(data.access_token.utf8), service: "access_token", account: "kyf")
                 break
             case .failure(let err):
-                print("error: \(err)")
+                print("error: \(err.rawValue)")
                 break
             }
         }

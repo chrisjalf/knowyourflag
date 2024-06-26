@@ -26,16 +26,16 @@ class APIManager {
     }
     
     func test(completed: @escaping (Result<[GameResult], KYFError>) -> Void) {
-        let url = "\(baseUrl)/game-result/test"
+        let endpoint = "\(baseUrl)/game-result/test"
         
-        guard let url = URL(string: url) else {
-            completed(.failure(.error))
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUrl))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
-                completed(.failure(.error))
+                completed(.failure(.unableToComplete))
                 return
             }
             
@@ -45,7 +45,7 @@ class APIManager {
             }
             
             guard let data = data else {
-                completed(.failure(.error))
+                completed(.failure(.invalidData))
                 return
             }
             
@@ -54,7 +54,7 @@ class APIManager {
                 let dt = try decoder.decode([GameResult].self, from: data)
                 completed(.success(dt))
             } catch {
-                completed(.failure(.error))
+                completed(.failure(.unableToDecode))
             }
         }
         
@@ -62,10 +62,10 @@ class APIManager {
     }
     
     func login(request: LoginRequest, completed: @escaping (Result<LoginResponse, KYFError>) -> Void) {
-        let url = "\(baseUrl)/auth/login"
+        let endpoint = "\(baseUrl)/auth/login"
         
-        guard let url = URL(string: url) else {
-            completed(.failure(.error))
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUrl))
             return
         }
         
@@ -77,12 +77,12 @@ class APIManager {
             let requestBody = try JSONEncoder().encode(request)
             urlRequest.httpBody = requestBody
         } catch {
-            completed(.failure(.error))
+            completed(.failure(.unableToEncode))
         }
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let _ = error {
-                completed(.failure(.error))
+                completed(.failure(.unableToComplete))
                 return
             }
             
@@ -92,7 +92,7 @@ class APIManager {
             }
             
             guard let data = data else {
-                completed(.failure(.error))
+                completed(.failure(.invalidData))
                 return
             }
             
@@ -101,7 +101,7 @@ class APIManager {
                 let payload = try decoder.decode(LoginResponse.self, from: data)
                 completed(.success(payload))
             } catch {
-                completed(.failure(.error))
+                completed(.failure(.unableToDecode))
             }
         }
         
@@ -109,10 +109,10 @@ class APIManager {
     }
     
     func profile(completed: @escaping (Result<ProfileResponse, KYFError>) -> Void) {
-        let url = "\(baseUrl)/user/profile"
+        let endpoint = "\(baseUrl)/user/profile"
         
-        guard let url = URL(string: url) else {
-            completed(.failure(.error))
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUrl))
             return
         }
         
@@ -121,7 +121,7 @@ class APIManager {
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let _ = error {
-                completed(.failure(.error))
+                completed(.failure(.unableToComplete))
                 return
             }
             
@@ -131,7 +131,7 @@ class APIManager {
             }
             
             guard let data = data else {
-                completed(.failure(.error))
+                completed(.failure(.invalidData))
                 return
             }
             
@@ -140,7 +140,7 @@ class APIManager {
                 let payload = try decoder.decode(ProfileResponse.self, from: data)
                 completed(.success(payload))
             } catch {
-                completed(.failure(.error))
+                completed(.failure(.unableToDecode))
             }
         }
         
