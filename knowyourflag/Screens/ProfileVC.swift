@@ -11,6 +11,7 @@ class ProfileVC: UIViewController {
     private var isAuthenticated: Bool!
     private var profile: ProfileResponse? = nil
     private let logoutButton = KYFButton(backgroundColor: .systemPink, title: "Logout")
+    private let loginButton = KYFButton(backgroundColor: .systemPink, title: "Login")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,9 @@ class ProfileVC: UIViewController {
             case .failure(_):
                 self?.profile = nil
                 self?.isAuthenticated = false
+                DispatchQueue.main.async {
+                    self?.configureLoginButton()
+                }
                 break
             }
         }
@@ -56,6 +60,17 @@ class ProfileVC: UIViewController {
         ])
     }
     
+    private func configureLoginButton() {
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
     private func removeSubviews() {
         for v in view.subviews {
            v.removeFromSuperview()
@@ -65,5 +80,6 @@ class ProfileVC: UIViewController {
     @objc private func logout() {
         KeychainManager.sharedInstance.delete(service: "access_token", account: "kyf")
         removeSubviews()
+        configureLoginButton()
     }
 }
