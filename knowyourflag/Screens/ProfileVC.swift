@@ -12,6 +12,7 @@ class ProfileVC: UIViewController {
     private var profile: ProfileResponse? = nil
     private let logoutButton = KYFButton(backgroundColor: .systemPink, title: "Logout")
     private let loginButton = KYFButton(backgroundColor: .systemPink, title: "Login")
+    private let deleteAccountButton = KYFButton(backgroundColor: .systemRed, title: "Delete Account")
     
     // profile fields
     private let emailLabel = UILabel()
@@ -41,10 +42,7 @@ class ProfileVC: UIViewController {
                 self?.profile = data
                 self?.isAuthenticated = true
                 DispatchQueue.main.async {
-                    self?.configureEmailStackView()
-                    self?.configureNameStackView()
-                    self?.configureJoinDateStackView()
-                    self?.configureLogoutButton()
+                    self?.configureAuthenticatedView()
                 }
                 break
             case .failure(_):
@@ -60,6 +58,14 @@ class ProfileVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    private func configureAuthenticatedView() {
+        configureEmailStackView()
+        configureNameStackView()
+        configureJoinDateStackView()
+        configureLogoutButton()
+        configureDeleteAccountButton()
     }
     
     private func configureEmailStackView() {
@@ -164,6 +170,18 @@ class ProfileVC: UIViewController {
         ])
     }
     
+    private func configureDeleteAccountButton() {
+        view.addSubview(deleteAccountButton)
+        deleteAccountButton.addTarget(self, action: #selector(attemptDeleteAccount), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            deleteAccountButton.bottomAnchor.constraint(equalTo: logoutButton.topAnchor, constant: -20),
+            deleteAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            deleteAccountButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            deleteAccountButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
     private func configureLoginButton() {
         view.addSubview(loginButton)
         
@@ -185,5 +203,32 @@ class ProfileVC: UIViewController {
         KeychainManager.sharedInstance.delete(service: "access_token", account: "kyf")
         removeSubviews()
         configureLoginButton()
+    }
+    
+    @objc private func attemptDeleteAccount() {
+        presentAlertOnMainThread(
+            title: "Delete Account",
+            message: "Account cannot be recovered once deleted. Are you sure?",
+            confirmButtonTitle: "Yes",
+            confirmButtonPostDismissAction: deleteAccount,
+            cancelButtonTitle: "No"
+        )
+    }
+    
+    private func deleteAccount() {
+        APIManager.sharedInstance.delete { [weak self] result in
+            guard let _ = self else { return }
+            
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.logout()
+                }
+                break
+            case .failure(let err):
+                print("error: \(err.rawValue)")
+                break
+            }
+        }
     }
 }
