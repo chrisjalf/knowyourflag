@@ -20,6 +20,9 @@ class ProfileVC: UIViewController {
     private let nameLabel = UILabel()
     private let nameValueLabel = UILabel()
     private let nameStackView = UIStackView()
+    private let joinDateLabel = UILabel()
+    private let joinDateValueLabel = UILabel()
+    private let joinDateStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,7 @@ class ProfileVC: UIViewController {
                 DispatchQueue.main.async {
                     self?.configureEmailStackView()
                     self?.configureNameStackView()
+                    self?.configureJoinDateStackView()
                     self?.configureLogoutButton()
                 }
                 break
@@ -105,6 +109,47 @@ class ProfileVC: UIViewController {
             nameStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
+    }
+    
+    private func configureJoinDateStackView() {
+        view.addSubview(joinDateStackView)
+        
+        joinDateLabel.text = "Join Date"
+        joinDateLabel.textColor = .label
+        joinDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        
+        if let profile = profile {
+            let inputDateFormatter = DateFormatter()
+            inputDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            inputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            inputDateFormatter.timeZone = TimeZone.current
+            
+            if let date = inputDateFormatter.date(from: profile.createdAt) {
+                let outputDateFormatter = DateFormatter()
+                outputDateFormatter.dateFormat = "yyyy-MM-dd"
+                
+                let formattedDateString = outputDateFormatter.string(from: date)
+                joinDateValueLabel.text = formattedDateString
+            } else {
+                joinDateValueLabel.text = "N/A"
+            }
+        } else {
+            joinDateValueLabel.text = "N/A"
+        }
+        joinDateValueLabel.textColor = .label
+        joinDateValueLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        
+        joinDateStackView.axis = .horizontal
+        joinDateStackView.distribution = .equalSpacing
+        joinDateStackView.addArrangedSubview(joinDateLabel)
+        joinDateStackView.addArrangedSubview(joinDateValueLabel)
+        joinDateStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            joinDateStackView.topAnchor.constraint(equalTo: nameStackView.bottomAnchor, constant: 20),
+            joinDateStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            joinDateStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
     }
     
     private func configureLogoutButton() {

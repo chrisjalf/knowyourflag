@@ -15,6 +15,7 @@ class APIManager {
     public enum HTTPMethod : String {
         case GET = "GET"
         case POST = "POST"
+        case DELETE = "DELETE"
     }
     
     private init() {}
@@ -142,6 +143,40 @@ class APIManager {
             } catch {
                 completed(.failure(.unableToDecode))
             }
+        }
+        
+        task.resume()
+    }
+    
+    func delete(completed: @escaping (Result<Bool, KYFError>) -> Void) {
+        let endpoint = "\(baseUrl)/user/delete"
+        
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUrl))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = HTTPMethod.DELETE.rawValue
+        urlRequest.addValue("Bearer \(getAccessToken())", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.error))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            completed(.success(true))
         }
         
         task.resume()
