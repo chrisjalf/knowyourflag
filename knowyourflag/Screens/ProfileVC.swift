@@ -160,7 +160,7 @@ class ProfileVC: UIViewController {
     
     private func configureLogoutButton() {
         view.addSubview(logoutButton)
-        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(attemptLogout), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             logoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -199,7 +199,17 @@ class ProfileVC: UIViewController {
         }
     }
     
-    @objc private func logout() {
+    @objc private func attemptLogout() {
+        presentAlertOnMainThread(
+            title: "Logout",
+            message: "Are you sure?",
+            confirmButtonTitle: "Yes",
+            confirmButtonPostDismissAction: logout,
+            cancelButtonTitle: "No"
+        )
+    }
+    
+    private func logout() {
         KeychainManager.sharedInstance.delete(service: "access_token", account: "kyf")
         removeSubviews()
         configureLoginButton()
