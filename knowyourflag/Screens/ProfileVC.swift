@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileVC: UIViewController {
-    private var isAuthenticated: Bool!
+    private let profileViewModel: ProfileViewModel
+    private var cancellables = Set<AnyCancellable>()
+    
     private var profile: ProfileResponse? = nil
     private let logoutButton = KYFButton(backgroundColor: .systemPink, title: "Logout")
     private let loginButton = KYFButton(backgroundColor: .systemPink, title: "Login")
@@ -25,35 +28,28 @@ class ProfileVC: UIViewController {
     private let joinDateValueLabel = UILabel()
     private let joinDateStackView = UIStackView()
     
+    init(profileViewModel: ProfileViewModel = ProfileViewModel.sharedInstance) {
+        self.profileViewModel = profileViewModel
+        profileViewModel.login(email: "chris.w4ac@gmail.com", password: "p4r4d31nd34th")
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        
+        setupObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        APIManager.sharedInstance.profile { [weak self] result in
-            guard let _ = self else { return }
-            
-            switch result {
-            case .success(let data):
-                self?.profile = data
-                self?.isAuthenticated = true
-                DispatchQueue.main.async {
-                    self?.configureAuthenticatedView()
-                }
-                break
-            case .failure(_):
-                self?.profile = nil
-                self?.isAuthenticated = false
-                DispatchQueue.main.async {
-                    self?.configureLoginButton()
-                }
-                break
-            }
-        }
+        profileViewModel.getProfile()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -193,9 +189,9 @@ class ProfileVC: UIViewController {
         ])
     }
     
-    private func removeSubviews() {
+    private func resetSubviews() {
         for v in view.subviews {
-           v.removeFromSuperview()
+            v.removeFromSuperview()
         }
     }
     
@@ -210,9 +206,7 @@ class ProfileVC: UIViewController {
     }
     
     private func logout() {
-        KeychainManager.sharedInstance.delete(service: "access_token", account: "kyf")
-        removeSubviews()
-        configureLoginButton()
+        profileViewModel.logout()
     }
     
     @objc private func attemptDeleteAccount() {
@@ -240,5 +234,23 @@ class ProfileVC: UIViewController {
                 break
             }
         }
+    }
+}
+
+extension ProfileVC {
+    private func setupObservers() {
+        profileViewModel.$profile
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] profile in
+                self?.profile = profile
+                self?.resetSubviews()
+                
+                if profile != nil {
+                    self?.configureAuthenticatedView()
+                } else {
+                    self?.configureLoginButton()
+                }
+            }
+            .store(in: &cancellables)
     }
 }

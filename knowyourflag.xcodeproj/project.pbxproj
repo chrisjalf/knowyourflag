@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */; };
+		CC6EA1952C2E852300B982C1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */; };
 		CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B12C030A6800E59184 /* AppDelegate.swift */; };
 		CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B32C030A6800E59184 /* SceneDelegate.swift */; };
 		CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B52C030A6800E59184 /* MainViewController.swift */; };
@@ -46,6 +47,7 @@
 		B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knowyourflag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.debug.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.debug.xcconfig"; sourceTree = "<group>"; };
 		CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CC7397AE2C030A6800E59184 /* knowyourflag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knowyourflag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7397B12C030A6800E59184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7397B32C030A6800E59184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		CC6EA1932C2E851400B982C1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CC7397A52C030A6800E59184 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
+				CC6EA1932C2E851400B982C1 /* ViewModels */,
 				CCE3B99C2C1F3D25006147F6 /* Utils */,
 				CCE204152C1DDF6E000C2B80 /* RealmObjectModel */,
 				CCE204122C1DDC2B000C2B80 /* Managers */,
@@ -437,6 +448,7 @@
 				CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */,
 				CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */,
 				CC784AA72C17304F00232EF7 /* KYFCountdownVC.swift in Sources */,
+				CC6EA1952C2E852300B982C1 /* ProfileViewModel.swift in Sources */,
 				CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */,
 				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
 				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,

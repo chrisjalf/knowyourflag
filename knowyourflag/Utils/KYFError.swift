@@ -13,5 +13,6 @@ enum KYFError: String, Error {
     case unableToEncode = "Unable to encode request"
     case invalidData = "Data received from the server is invalid"
     case unableToDecode = "Unable to decode data received from the server"
+    case accessTokenNotFound = "Access token not found"
     case error = "Something went wrong"
 }

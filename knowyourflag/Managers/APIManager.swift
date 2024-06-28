@@ -20,10 +20,18 @@ class APIManager {
     
     private init() {}
     
-    private func getAccessToken() -> String {
-        guard let data = KeychainManager.sharedInstance.read(service: "access_token", account: "kyf") else { return "Token empty" }
+    private func getAccessToken() -> String? {
+        guard let accessToken = KeychainManager.sharedInstance.read(service: "access_token", account: "kyf") else { return nil }
 
-        return String(data: data, encoding: .utf8)!
+        return String(data: accessToken, encoding: .utf8)!
+    }
+    
+    func accessTokenExists() -> Bool {
+        return getAccessToken() != nil
+    }
+    
+    func clearAccessToken() {
+        KeychainManager.sharedInstance.delete(service: "access_token", account: "kyf")
     }
     
     func test(completed: @escaping (Result<[GameResult], KYFError>) -> Void) {
@@ -117,8 +125,13 @@ class APIManager {
             return
         }
         
+        guard let accessToken = getAccessToken() else {
+            completed(.failure(.accessTokenNotFound))
+            return
+        }
+        
         var urlRequest = URLRequest(url: url)
-        urlRequest.addValue("Bearer \(getAccessToken())", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let _ = error {
@@ -156,9 +169,14 @@ class APIManager {
             return
         }
         
+        guard let accessToken = getAccessToken() else {
+            completed(.failure(.accessTokenNotFound))
+            return
+        }
+        
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.DELETE.rawValue
-        urlRequest.addValue("Bearer \(getAccessToken())", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let _ = error {
@@ -171,7 +189,7 @@ class APIManager {
                 return
             }
             
-            guard let data = data else {
+            guard let _ = data else {
                 completed(.failure(.invalidData))
                 return
             }

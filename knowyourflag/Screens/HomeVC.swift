@@ -6,48 +6,35 @@
 //
 
 import UIKit
+import Combine
 import DropDown
 
 class HomeVC: UIViewController {
+    private let profileViewModel: ProfileViewModel
+    private var cancellables = Set<AnyCancellable>()
     
     var collectionView: UICollectionView!
     let gameTypes = [GameType.guessTheCountry.rawValue, GameType.guessTheFlag.rawValue]
     let gameModes = [GameMode.sixtySeconds.rawValue, GameMode.unlimited.rawValue]
     let gameModeDropdown = DropDown()
     
+    init(profileViewModel: ProfileViewModel = ProfileViewModel.sharedInstance) {
+        self.profileViewModel = profileViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         
+        setupObservers()
         configureCollectionView()
         configureGameModeDropdown()
-        
-        let apiManager = APIManager.sharedInstance
-//        apiManager.test { [weak self] result in
-//            guard let _ = self else { return }
-//            
-//            switch result {
-//            case .success(let a):
-//                print("popo: \(a)")
-//                break
-//            case .failure(let error):
-//                print("error: \(error)")
-//                break
-//            }
-//        }
-        apiManager.login(request: LoginRequest(email: "chris.w4ac@gmail.com", password: "p4r4d31nd34th")) { [weak self] result in
-            guard let _ = self else { return }
-            
-            switch result {
-            case .success(let data):
-                KeychainManager.sharedInstance.save(data: Data(data.access_token.utf8), service: "access_token", account: "kyf")
-                break
-            case .failure(let err):
-                print("error: \(err.rawValue)")
-                break
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,5 +123,16 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         return false
+    }
+}
+
+extension HomeVC {
+    private func setupObservers() {
+        profileViewModel.$profile
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] profile in
+                print("HomeVC profile:\(profile)")
+            }
+            .store(in: &cancellables)
     }
 }
