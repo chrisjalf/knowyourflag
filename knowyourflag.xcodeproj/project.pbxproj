@@ -28,6 +28,7 @@
 		CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */; };
 		CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
+		CC8CDF6C2C31A81B00268DAE /* KYFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CDF6B2C31A81B00268DAE /* KYFTextField.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
 		CCB5A0022C2AB20B00BEFEE7 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */; };
 		CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */; };
@@ -69,6 +70,7 @@
 		CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceView.swift; sourceTree = "<group>"; };
 		CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceGestureRecognizer.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		CC8CDF6B2C31A81B00268DAE /* KYFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFTextField.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */,
 				CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */,
+				CC8CDF6B2C31A81B00268DAE /* KYFTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				CC6EA1952C2E852300B982C1 /* ProfileViewModel.swift in Sources */,
 				CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */,
 				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
+				CC8CDF6C2C31A81B00268DAE /* KYFTextField.swift in Sources */,
 				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
 				CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */,
