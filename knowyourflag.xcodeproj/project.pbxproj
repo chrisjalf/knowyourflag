@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */; };
 		CC6EA1952C2E852300B982C1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */; };
+		CC6FA6E42C32967D0053C1DA /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6FA6E32C32967D0053C1DA /* String+Ext.swift */; };
 		CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B12C030A6800E59184 /* AppDelegate.swift */; };
 		CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B32C030A6800E59184 /* SceneDelegate.swift */; };
 		CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B52C030A6800E59184 /* MainViewController.swift */; };
@@ -49,6 +50,7 @@
 		C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.debug.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.debug.xcconfig"; sourceTree = "<group>"; };
 		CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		CC6FA6E32C32967D0053C1DA /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		CC7397AE2C030A6800E59184 /* knowyourflag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knowyourflag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7397B12C030A6800E59184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7397B32C030A6800E59184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */,
+				CC6FA6E32C32967D0053C1DA /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				CCE3B9A02C1F3F4E006147F6 /* GameResult.swift in Sources */,
 				CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */,
 				CC770D642C0DCF910066177C /* Country.swift in Sources */,
+				CC6FA6E42C32967D0053C1DA /* String+Ext.swift in Sources */,
 				CCE3B99B2C1F3C57006147F6 /* APIManager.swift in Sources */,
 				CCB5A0062C2AF89200BEFEE7 /* ProfileVC.swift in Sources */,
 				CCE3B99E2C1F3D35006147F6 /* KYFError.swift in Sources */,

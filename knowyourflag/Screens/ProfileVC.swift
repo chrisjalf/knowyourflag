@@ -17,7 +17,7 @@ class ProfileVC: UIViewController {
     private let loginButton = KYFButton(backgroundColor: .systemPink, title: "Login")
     private let deleteAccountButton = KYFButton(backgroundColor: .systemRed, title: "Delete Account")
     
-    // profile fields
+    // MARK: Profile fields
     private let emailLabel = UILabel()
     private let emailValueLabel = UILabel()
     private let emailStackView = UIStackView()
@@ -27,6 +27,11 @@ class ProfileVC: UIViewController {
     private let joinDateLabel = UILabel()
     private let joinDateValueLabel = UILabel()
     private let joinDateStackView = UIStackView()
+    
+    // MARK: Login fields
+    private let emailTextField = KYFTextField()
+    private let emailTextFieldErrorLabel = UILabel()
+    private let emailTextFieldStackView = UIStackView()
     
     init(profileViewModel: ProfileViewModel = ProfileViewModel.sharedInstance) {
         self.profileViewModel = profileViewModel
@@ -52,10 +57,89 @@ class ProfileVC: UIViewController {
         profileViewModel.getProfile()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    private func resetSubviews() {
+        for v in view.subviews {
+            v.removeFromSuperview()
+        }
+    }
+}
+
+extension ProfileVC {
+    private func setupObservers() {
+        profileViewModel.$profile
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] profile in
+                self?.profile = profile
+                self?.resetSubviews()
+                
+                if profile != nil {
+                    self?.configureAuthenticatedView()
+                } else {
+                    self?.configureUnauthenticatedView()
+                }
+            }
+            .store(in: &cancellables)
+    }
+}
+
+extension ProfileVC {
+    // MARK: Unauthenticated views
+    private func configureUnauthenticatedView() {
+        configureEmailTextField()
     }
     
+    private func configureEmailTextField() {
+        view.addSubview(emailTextFieldStackView)
+        
+        emailTextField.placeholder = "Email"
+        emailTextField.autocorrectionType = .no
+        emailTextField.autocapitalizationType = .none
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.borderColor = UIColor.systemGray.cgColor
+        emailTextField.layer.cornerRadius = 5
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        emailTextFieldStackView.axis = .vertical
+        emailTextFieldStackView.distribution = .equalSpacing
+        emailTextFieldStackView.addArrangedSubview(emailTextField)
+        emailTextFieldStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            emailTextFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailTextFieldStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emailTextFieldStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            emailTextFieldStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    private func configureEmailTextFieldErrorLabel(errorMessage: String = "") {
+        emailTextField.layer.borderColor = UIColor.systemRed.cgColor
+        emailTextFieldStackView.addArrangedSubview(emailTextFieldErrorLabel)
+        
+        emailTextFieldErrorLabel.text = errorMessage
+        emailTextFieldErrorLabel.textColor = .systemRed
+        emailTextFieldErrorLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+    }
+    
+    private func removeEmailTextFieldErrorLabel() {
+        emailTextField.layer.borderColor = UIColor.systemGray.cgColor
+        emailTextFieldErrorLabel.removeFromSuperview()
+    }
+    
+    private func configureLoginButton() {
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+}
+
+extension ProfileVC {
+    // MARK: Authenticated views
     private func configureAuthenticatedView() {
         configureEmailStackView()
         configureNameStackView()
@@ -177,24 +261,10 @@ class ProfileVC: UIViewController {
             deleteAccountButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    private func configureLoginButton() {
-        view.addSubview(loginButton)
-        
-        NSLayoutConstraint.activate([
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            loginButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    private func resetSubviews() {
-        for v in view.subviews {
-            v.removeFromSuperview()
-        }
-    }
-    
+}
+
+extension ProfileVC {
+    // MARK: Actions
     @objc private func attemptLogout() {
         presentAlertOnMainThread(
             title: "Logout",
@@ -235,22 +305,30 @@ class ProfileVC: UIViewController {
             }
         }
     }
-}
-
-extension ProfileVC {
-    private func setupObservers() {
-        profileViewModel.$profile
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] profile in
-                self?.profile = profile
-                self?.resetSubviews()
-                
-                if profile != nil {
-                    self?.configureAuthenticatedView()
-                } else {
-                    self?.configureLoginButton()
-                }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+        case self.emailTextField:
+            if textField.text == nil || textField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+                self.configureEmailTextFieldErrorLabel(errorMessage: "Email is required")
+            } else if !textField.text!.isValidEmail {
+                self.configureEmailTextFieldErrorLabel(errorMessage: "Email is invalid")
+            } else {
+                self.removeEmailTextFieldErrorLabel()
             }
-            .store(in: &cancellables)
+            break
+        default:
+            break
+        }
+    }
+    
+    private func checkFields() {
+        if self.emailTextField.text == nil || self.emailTextField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+            self.configureEmailTextFieldErrorLabel(errorMessage: "Email is required")
+        } else if !self.emailTextField.text!.isValidEmail {
+            self.configureEmailTextFieldErrorLabel(errorMessage: "Email is invalid")
+        } else {
+            self.removeEmailTextFieldErrorLabel()
+        }
     }
 }
