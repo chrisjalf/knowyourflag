@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */; };
+		CC6EA1952C2E852300B982C1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */; };
+		CC6FA6E42C32967D0053C1DA /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6FA6E32C32967D0053C1DA /* String+Ext.swift */; };
 		CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B12C030A6800E59184 /* AppDelegate.swift */; };
 		CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B32C030A6800E59184 /* SceneDelegate.swift */; };
 		CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7397B52C030A6800E59184 /* MainViewController.swift */; };
@@ -27,7 +29,13 @@
 		CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */; };
 		CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */; };
 		CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E912C060972002AC0CD /* HomeVC.swift */; };
+		CC8CDF6C2C31A81B00268DAE /* KYFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CDF6B2C31A81B00268DAE /* KYFTextField.swift */; };
 		CCA34C112C033FA200CCCB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */; };
+		CCB5A0022C2AB20B00BEFEE7 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */; };
+		CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */; };
+		CCB5A0062C2AF89200BEFEE7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0052C2AF89200BEFEE7 /* ProfileVC.swift */; };
+		CCB5A0082C2AFB8300BEFEE7 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0072C2AFB8300BEFEE7 /* KeychainManager.swift */; };
+		CCB5A00A2C2AFD0200BEFEE7 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A0092C2AFD0200BEFEE7 /* ProfileResponse.swift */; };
 		CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204132C1DDC39000C2B80 /* RealmManager.swift */; };
 		CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */; };
 		CCE3B99B2C1F3C57006147F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE3B99A2C1F3C57006147F6 /* APIManager.swift */; };
@@ -41,6 +49,8 @@
 		B37B57DF2AFCF11878A8D9B6 /* Pods_knowyourflag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knowyourflag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C856B958F7081C29AF83147D /* Pods-knowyourflag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knowyourflag.debug.xcconfig"; path = "Target Support Files/Pods-knowyourflag/Pods-knowyourflag.debug.xcconfig"; sourceTree = "<group>"; };
 		CC6ADFD72C0CAC1400326DE9 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		CC6FA6E32C32967D0053C1DA /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		CC7397AE2C030A6800E59184 /* knowyourflag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knowyourflag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7397B12C030A6800E59184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7397B32C030A6800E59184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +72,13 @@
 		CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceView.swift; sourceTree = "<group>"; };
 		CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFCountryChoiceGestureRecognizer.swift; sourceTree = "<group>"; };
 		CC7B8E912C060972002AC0CD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		CC8CDF6B2C31A81B00268DAE /* KYFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYFTextField.swift; sourceTree = "<group>"; };
 		CCA34C102C033FA200CCCB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		CCB5A0052C2AF89200BEFEE7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		CCB5A0072C2AFB8300BEFEE7 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		CCB5A0092C2AFD0200BEFEE7 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
 		CCE204132C1DDC39000C2B80 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCE204162C1DDFC4000C2B80 /* GameResultObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultObjectModel.swift; sourceTree = "<group>"; };
 		CCE3B99A2C1F3C57006147F6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -96,6 +112,7 @@
 				CC7B8E912C060972002AC0CD /* HomeVC.swift */,
 				CC770D5E2C0D9E380066177C /* GuessTheCountryVC.swift */,
 				CC7869212C15B63F00A96B57 /* GuessTheFlagVC.swift */,
+				CCB5A0052C2AF89200BEFEE7 /* ProfileVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -120,6 +137,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		CC6EA1932C2E851400B982C1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CC6EA1942C2E852300B982C1 /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CC7397A52C030A6800E59184 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +166,7 @@
 		CC7397B02C030A6800E59184 /* knowyourflag */ = {
 			isa = PBXGroup;
 			children = (
+				CC6EA1932C2E851400B982C1 /* ViewModels */,
 				CCE3B99C2C1F3D25006147F6 /* Utils */,
 				CCE204152C1DDF6E000C2B80 /* RealmObjectModel */,
 				CCE204122C1DDC2B000C2B80 /* Managers */,
@@ -163,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CC770D4F2C0D962E0066177C /* UIViewController+Ext.swift */,
+				CC6FA6E32C32967D0053C1DA /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,6 +224,8 @@
 		CC770D622C0DCF850066177C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CCB5A0002C2AB1FC00BEFEE7 /* Responses */,
+				CCB59FFF2C2AB1F400BEFEE7 /* Requests */,
 				CC770D632C0DCF910066177C /* Country.swift */,
 				CC7B11802C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift */,
 				CCE3B99F2C1F3F4E006147F6 /* GameResult.swift */,
@@ -209,8 +238,26 @@
 			children = (
 				CC7B117E2C134F22004A86C8 /* KYFCountryChoiceView.swift */,
 				CC7869232C15C26200A96B57 /* KYFFlagChoiceView.swift */,
+				CC8CDF6B2C31A81B00268DAE /* KYFTextField.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CCB59FFF2C2AB1F400BEFEE7 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				CCB5A0032C2AB28800BEFEE7 /* LoginRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		CCB5A0002C2AB1FC00BEFEE7 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				CCB5A0012C2AB20B00BEFEE7 /* LoginResponse.swift */,
+				CCB5A0092C2AFD0200BEFEE7 /* ProfileResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		CCE204122C1DDC2B000C2B80 /* Managers */ = {
@@ -218,6 +265,7 @@
 			children = (
 				CCE204132C1DDC39000C2B80 /* RealmManager.swift */,
 				CCE3B99A2C1F3C57006147F6 /* APIManager.swift */,
+				CCB5A0072C2AFB8300BEFEE7 /* KeychainManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -389,20 +437,28 @@
 				CC6ADFD82C0CAC1400326DE9 /* MyCollectionViewCell.swift in Sources */,
 				CC7869242C15C26200A96B57 /* KYFFlagChoiceView.swift in Sources */,
 				CC770D5D2C0D97A10066177C /* KYFButton.swift in Sources */,
+				CCB5A00A2C2AFD0200BEFEE7 /* ProfileResponse.swift in Sources */,
 				CCE3B9A02C1F3F4E006147F6 /* GameResult.swift in Sources */,
 				CC770D572C0D97280066177C /* KYFTitleLabel.swift in Sources */,
 				CC770D642C0DCF910066177C /* Country.swift in Sources */,
+				CC6FA6E42C32967D0053C1DA /* String+Ext.swift in Sources */,
 				CCE3B99B2C1F3C57006147F6 /* APIManager.swift in Sources */,
+				CCB5A0062C2AF89200BEFEE7 /* ProfileVC.swift in Sources */,
 				CCE3B99E2C1F3D35006147F6 /* KYFError.swift in Sources */,
 				CC7397B62C030A6800E59184 /* MainViewController.swift in Sources */,
 				CC7B8E922C060972002AC0CD /* HomeVC.swift in Sources */,
 				CC7397B22C030A6800E59184 /* AppDelegate.swift in Sources */,
+				CCB5A0082C2AFB8300BEFEE7 /* KeychainManager.swift in Sources */,
 				CC770D532C0D96DB0066177C /* KYFAlertVC.swift in Sources */,
 				CC770D592C0D974B0066177C /* KYFBodyLabel.swift in Sources */,
+				CCB5A0022C2AB20B00BEFEE7 /* LoginResponse.swift in Sources */,
 				CCE204172C1DDFC4000C2B80 /* GameResultObjectModel.swift in Sources */,
 				CCE204142C1DDC39000C2B80 /* RealmManager.swift in Sources */,
 				CC784AA72C17304F00232EF7 /* KYFCountdownVC.swift in Sources */,
+				CC6EA1952C2E852300B982C1 /* ProfileViewModel.swift in Sources */,
+				CCB5A0042C2AB28800BEFEE7 /* LoginRequest.swift in Sources */,
 				CC7869222C15B63F00A96B57 /* GuessTheFlagVC.swift in Sources */,
+				CC8CDF6C2C31A81B00268DAE /* KYFTextField.swift in Sources */,
 				CC7B11812C135783004A86C8 /* KYFCountryChoiceGestureRecognizer.swift in Sources */,
 				CC7397B42C030A6800E59184 /* SceneDelegate.swift in Sources */,
 				CC7B117F2C134F22004A86C8 /* KYFCountryChoiceView.swift in Sources */,
