@@ -29,13 +29,16 @@ class ProfileVC: UIViewController {
     private let joinDateStackView = UIStackView()
     
     // MARK: Login fields
+    private let loginStackView = UIStackView()
     private let emailTextField = KYFTextField()
     private let emailTextFieldErrorLabel = UILabel()
     private let emailTextFieldStackView = UIStackView()
+    private let passwordTextField = KYFTextField()
+    private let passwordTextFieldErrorLabel = UILabel()
+    private let passwordTextFieldStackView = UIStackView()
     
     init(profileViewModel: ProfileViewModel = ProfileViewModel.sharedInstance) {
         self.profileViewModel = profileViewModel
-        profileViewModel.login(email: "chris.w4ac@gmail.com", password: "p4r4d31nd34th")
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -85,12 +88,32 @@ extension ProfileVC {
 extension ProfileVC {
     // MARK: Unauthenticated views
     private func configureUnauthenticatedView() {
+        configureLoginStackView()
+    }
+    
+    private func configureLoginStackView() {
+        view.addSubview(loginStackView)
+        
         configureEmailTextField()
+        configurePasswordTextField()
+        configureLoginButton()
+        
+        loginStackView.axis = .vertical
+        loginStackView.spacing = 16
+        loginStackView.addArrangedSubview(emailTextFieldStackView)
+        loginStackView.addArrangedSubview(passwordTextFieldStackView)
+        loginStackView.addArrangedSubview(loginButton)
+        loginStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            loginStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            loginStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
     }
     
     private func configureEmailTextField() {
-        view.addSubview(emailTextFieldStackView)
-        
         emailTextField.placeholder = "Email"
         emailTextField.autocorrectionType = .no
         emailTextField.autocapitalizationType = .none
@@ -103,13 +126,6 @@ extension ProfileVC {
         emailTextFieldStackView.distribution = .equalSpacing
         emailTextFieldStackView.addArrangedSubview(emailTextField)
         emailTextFieldStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            emailTextFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emailTextFieldStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            emailTextFieldStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            emailTextFieldStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-        ])
     }
     
     private func configureEmailTextFieldErrorLabel(errorMessage: String = "") {
@@ -117,22 +133,51 @@ extension ProfileVC {
         emailTextFieldStackView.addArrangedSubview(emailTextFieldErrorLabel)
         
         emailTextFieldErrorLabel.text = errorMessage
+        emailTextFieldErrorLabel.numberOfLines = 0
         emailTextFieldErrorLabel.textColor = .systemRed
         emailTextFieldErrorLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
     }
     
     private func removeEmailTextFieldErrorLabel() {
         emailTextField.layer.borderColor = UIColor.systemGray.cgColor
+        emailTextFieldErrorLabel.text = ""
         emailTextFieldErrorLabel.removeFromSuperview()
     }
     
+    private func configurePasswordTextField() {
+        passwordTextField.placeholder = "Password"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.borderColor = UIColor.systemGray.cgColor
+        passwordTextField.layer.cornerRadius = 5
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        passwordTextFieldStackView.axis = .vertical
+        passwordTextFieldStackView.distribution = .equalSpacing
+        passwordTextFieldStackView.addArrangedSubview(passwordTextField)
+        passwordTextFieldStackView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configurePasswordTextFieldErrorLabel(errorMessage: String = "") {
+        passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
+        passwordTextFieldStackView.addArrangedSubview(passwordTextFieldErrorLabel)
+        
+        passwordTextFieldErrorLabel.text = errorMessage
+        passwordTextFieldErrorLabel.numberOfLines = 0
+        passwordTextFieldErrorLabel.textColor = .systemRed
+        passwordTextFieldErrorLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+    }
+    
+    private func removePasswordTextFieldErrorLabel() {
+        passwordTextField.layer.borderColor = UIColor.systemGray.cgColor
+        passwordTextFieldErrorLabel.text = ""
+        passwordTextFieldErrorLabel.removeFromSuperview()
+    }
+    
     private func configureLoginButton() {
-        view.addSubview(loginButton)
+        loginButton.addTarget(self, action: #selector(attemptLogin), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -265,6 +310,20 @@ extension ProfileVC {
 
 extension ProfileVC {
     // MARK: Actions
+    @objc private func attemptLogin() {
+        checkFields()
+        
+        if self.emailTextFieldErrorLabel.text.isEmptyOrNil && self.passwordTextFieldErrorLabel.text.isEmptyOrNil {
+            login()
+        } else {
+            print("critical ded")
+        }
+    }
+    
+    private func login() {
+        profileViewModel.login(email: self.emailTextField.text!, password: self.passwordTextField.text!)
+    }
+    
     @objc private func attemptLogout() {
         presentAlertOnMainThread(
             title: "Logout",
@@ -317,6 +376,14 @@ extension ProfileVC {
                 self.removeEmailTextFieldErrorLabel()
             }
             break
+        case self.passwordTextField:
+            if textField.text == nil || textField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+                self.configurePasswordTextFieldErrorLabel(errorMessage: "Password is required")
+            } //else if !textField.text!.isValidPassword {
+                //self.configurePasswordTextFieldErrorLabel(errorMessage: "Password must be 8 characters minimum and alphanumeric with both uppercase and lowercase letter")
+            /*}*/ else {
+                self.removePasswordTextFieldErrorLabel()
+            }
         default:
             break
         }
@@ -329,6 +396,14 @@ extension ProfileVC {
             self.configureEmailTextFieldErrorLabel(errorMessage: "Email is invalid")
         } else {
             self.removeEmailTextFieldErrorLabel()
+        }
+        
+        if self.passwordTextField.text == nil || self.passwordTextField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+            self.configurePasswordTextFieldErrorLabel(errorMessage: "Password is required")
+        } //else if !self.passwordTextField.text!.isValidPassword {
+            //self.configurePasswordTextFieldErrorLabel(errorMessage: "Password must be 8 characters minimum and alphanumeric with both uppercase and lowercase letter")
+        /*}*/ else {
+            self.removePasswordTextFieldErrorLabel()
         }
     }
 }

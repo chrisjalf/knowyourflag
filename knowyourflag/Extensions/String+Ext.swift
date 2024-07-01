@@ -22,3 +22,9 @@ extension String {
         return passwordPredicate.evaluate(with: self)
     }
 }
+
+extension Optional<String> {
+    var isEmptyOrNil: Bool {
+        return self?.isEmpty ?? true
+    }
+}
