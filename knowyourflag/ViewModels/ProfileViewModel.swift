@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 class ProfileViewModel: ObservableObject {
-    static let sharedInstance = ProfileViewModel()
+    static let sharedInstance = ProfileViewModel() // shared instance
     @Published var profile: ProfileResponse? = nil
     @Published var isAuthenticated = false
     
-    private init() {}
+    private init() {} // singleton?
     
     func getProfile() {
         let apiManager = APIManager.sharedInstance
